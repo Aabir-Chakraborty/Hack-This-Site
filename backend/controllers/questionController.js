@@ -59,7 +59,7 @@ exports.firstQuestion = (req, res, next) => {
 // Rejumbled
 exports.secondQuestion = (req, res, next) => {
   try {
-    const question = randomString(5);
+    const question = randomString(4);
 
     res.status(200).json({
       status: 'success',
@@ -96,7 +96,50 @@ exports.fourthQuestion = (req, res, next) => {
 };
 
 // Proxy
-exports.fifthQuestion = (req, res, next) => {};
+exports.fifthQuestion1 = (req, res, next) => {
+  res.status(200).json({
+    status: 'success',
+    food: 'biryani',
+    taste: 'good',
+    review: '5',
+    string: 'likely',
+    data: 'res.json',
+    cool: 'strigify',
+  });
+};
+exports.fifthQuestion2 = (req, res, next) => {
+  res.status(200).json({
+    status: 'success',
+    food: 'biryani',
+    taste: 'good',
+    review: '5',
+    string: Math.floor(Math.random() * 9 + 80),
+    data: 'res.json',
+    cool: 'stringify',
+  });
+};
+exports.fifthQuestion3 = (req, res, next) => {
+  res.status(200).json({
+    status: 'success',
+    food: 'yagi',
+    taste: 'ok',
+    review: '3',
+    string: 'correct',
+    data: 'res.json',
+    cool: 'stringiy',
+  });
+};
+exports.fifthQuestion4 = (req, res, next) => {
+  res.status(200).json({
+    status: 'success',
+    food: 'paneer',
+    taste: 'good',
+    review: '4.5',
+    string: 'almost',
+    data: 'res.json',
+    cool: 'stringfy',
+  });
+};
 
 exports.sixthQuestion = (req, res, next) => {};
 
