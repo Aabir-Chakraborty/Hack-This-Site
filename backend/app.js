@@ -11,6 +11,8 @@ const cors = require('cors');
 const AppError = require('./utils/appError');
 const globalErrorHandler = require('./controllers/errorController');
 const authRouter = require('./routes/authRoutes');
+const questionRouter = require('./routes/questionRoutes');
+const answerRouter = require('./routes/answerRoutes');
 
 const app = express();
 
@@ -43,6 +45,8 @@ app.use(xss());
 // 2) ROUTES
 // USING GLOBAL HANDLER
 app.use('/api/v1/users', authRouter);
+app.use('/api/v1/questions', questionRouter);
+app.use('/api/v1/answers', answerRouter);
 
 // IF USER HITS ROUTE THAT DOES NOT EXIST
 app.all('*', (req, res, next) => {
