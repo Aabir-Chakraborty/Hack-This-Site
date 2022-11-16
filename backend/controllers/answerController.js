@@ -121,6 +121,17 @@ exports.fifthAnswer = (req, res, next) => {
 
 exports.sixthAnswer = (req, res, next) => {
   try {
+    if (req.body.answer === '3284923ire29') {
+      res.status(200).json({
+        status: 'success',
+        flag: true,
+      });
+    } else {
+      res.status(200).json({
+        status: 'success',
+        flag: false,
+      });
+    }
   } catch (err) {
     errorResponse(404, err);
   }
@@ -128,6 +139,17 @@ exports.sixthAnswer = (req, res, next) => {
 
 exports.seventhAnswer = (req, res, next) => {
   try {
+    if (req.body.answer === '4759232') {
+      res.status(200).json({
+        status: 'success',
+        flag: true,
+      });
+    } else {
+      res.status(200).json({
+        status: 'success',
+        flag: false,
+      });
+    }
   } catch (err) {
     errorResponse(404, err);
   }
