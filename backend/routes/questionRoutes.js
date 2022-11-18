@@ -1,7 +1,11 @@
 const express = require('express');
 const questionController = require('../controllers/questionController');
+const authController = require('../controllers/authController');
 
 const router = express.Router();
+
+// USER MUST BE LOGGED IN TO ACCESS THE FOLLOWING ROUTES
+router.use(authController.protect);
 
 router.get('/7453859', questionController.firstQuestion);
 router.get('/8358652', questionController.secondQuestion);

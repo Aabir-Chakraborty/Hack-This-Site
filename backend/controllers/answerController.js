@@ -1,7 +1,9 @@
+const User = require('../models/userModel');
 const errorResponse = require('../utils/catchError');
 
 // CRYPTO ENCRYPTION DATA
 const crypto = require('crypto');
+const { findById } = require('../models/userModel');
 const algorithm1 = 'aes-256-cbc';
 const algorithm2 = 'aes-192-cbc';
 const key1 = crypto.randomBytes(32);
@@ -60,10 +62,25 @@ exports.firstAnswer = (req, res, next) => {
   }
 };
 
-exports.secondAnswer = (req, res, next) => {
+exports.secondAnswer = async (req, res, next) => {
   try {
     const question = shuffle(req.body.question);
     const flag = question === req.body.answer ? true : false;
+
+    if (flag) {
+      // Update user score and mark that he has attempted the test
+      const user = await User.findById(req.params.id);
+      const updatedUser = await User.findByIdAndUpdate(
+        req.params.id,
+        {
+          flags: [user.flags[0] + 1, user.flags[1], user.flags[2]],
+        },
+        {
+          new: true,
+          runValidators: true,
+        }
+      );
+    }
 
     res.status(200).json({
       status: 'success',
