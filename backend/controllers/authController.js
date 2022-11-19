@@ -2,7 +2,6 @@ const { promisify } = require('util');
 const jwt = require('jsonwebtoken');
 const User = require('./../models/userModel');
 const dotenv = require('dotenv');
-const errorResponse = require('../utils/catchError');
 
 // INITIALIZING PATH TO .CONFIG FILE
 dotenv.config({ path: './config.env' });
@@ -38,14 +37,16 @@ const createSendToken = (user, statusCode, res) => {
 
 exports.signup = async (req, res, next) => {
   try {
-    const newUser = await User.create({
-      teamName: req.body.teamName,
-      password: req.body.password,
-    });
+    const { teamName, password } = req.body;
+
+    const newUser = await User.create({ teamName, password });
 
     createSendToken(newUser, 201, res);
   } catch (err) {
-    errorResponse(404, err);
+    res.status(400).json({
+      status: 'failed',
+      message: err.message,
+    });
   }
 };
 
@@ -53,7 +54,7 @@ exports.login = async (req, res, next) => {
   try {
     const { teamName, password } = req.body;
 
-    // 1) Check if email and password exist
+    // 1) Check if team name and password exist
     if (!teamName || !password) {
       res.status(400).json({
         status: 'failed',
@@ -68,7 +69,7 @@ exports.login = async (req, res, next) => {
     if (!user || user.password !== password) {
       res.status(401).json({
         status: 'failed',
-        message: 'Incorrect email or password',
+        message: 'Incorrect team name or password',
       });
       return;
     }
@@ -85,7 +86,10 @@ exports.login = async (req, res, next) => {
     // 3) If everything ok, send token to client
     createSendToken(user, 200, res);
   } catch (err) {
-    errorResponse(404, err);
+    res.status(400).json({
+      status: 'failed',
+      message: err.message,
+    });
   }
 };
 

@@ -1,5 +1,3 @@
-const errorResponse = require('../utils/catchError');
-
 // CRYPTO ENCRYPTION DATA
 const crypto = require('crypto');
 const algorithm1 = 'aes-256-cbc';
@@ -52,7 +50,10 @@ exports.firstQuestion = (req, res, next) => {
       number,
     });
   } catch (err) {
-    errorResponse(404, err);
+    res.status(400).json({
+      status: 'failed',
+      message: err.message,
+    });
   }
 };
 
@@ -66,7 +67,10 @@ exports.secondQuestion = (req, res, next) => {
       question,
     });
   } catch (err) {
-    errorResponse(404, err);
+    res.status(400).json({
+      status: 'failed',
+      message: err.message,
+    });
   }
 };
 
@@ -81,7 +85,10 @@ exports.thirdQuestion = (req, res, next) => {
       status: 'success',
     });
   } catch (err) {
-    errorResponse(404, err);
+    res.status(400).json({
+      status: 'failed',
+      message: err.message,
+    });
   }
 };
 

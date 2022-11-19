@@ -1,5 +1,4 @@
 const User = require('../models/userModel');
-const errorResponse = require('../utils/catchError');
 
 // CRYPTO ENCRYPTION DATA
 const crypto = require('crypto');
@@ -58,7 +57,10 @@ exports.firstAnswer = (req, res, next) => {
       flag,
     });
   } catch (err) {
-    errorResponse(404, err);
+    res.status(400).json({
+      status: 'failed',
+      message: err.message,
+    });
   }
 };
 
@@ -87,7 +89,10 @@ exports.secondAnswer = async (req, res, next) => {
       flag,
     });
   } catch (err) {
-    errorResponse(404, err);
+    res.status(400).json({
+      status: 'failed',
+      message: err.message,
+    });
   }
 };
 
@@ -103,7 +108,10 @@ exports.thirdAnswer = (req, res, next) => {
       flag,
     });
   } catch (err) {
-    errorResponse(404, err);
+    res.status(400).json({
+      status: 'failed',
+      message: err.message,
+    });
   }
 };
 
@@ -119,7 +127,10 @@ exports.fourthAnswer = (req, res, next) => {
       flag,
     });
   } catch (err) {
-    errorResponse(404, err);
+    res.status(400).json({
+      status: 'failed',
+      message: err.message,
+    });
   }
 };
 
@@ -132,7 +143,10 @@ exports.fifthAnswer = (req, res, next) => {
       flag,
     });
   } catch (err) {
-    errorResponse(404, err);
+    res.status(400).json({
+      status: 'failed',
+      message: err.message,
+    });
   }
 };
 
@@ -150,7 +164,10 @@ exports.sixthAnswer = (req, res, next) => {
       });
     }
   } catch (err) {
-    errorResponse(404, err);
+    res.status(400).json({
+      status: 'failed',
+      message: err.message,
+    });
   }
 };
 
@@ -168,26 +185,38 @@ exports.seventhAnswer = (req, res, next) => {
       });
     }
   } catch (err) {
-    errorResponse(404, err);
+    res.status(400).json({
+      status: 'failed',
+      message: err.message,
+    });
   }
 };
 
 exports.eighthAnswer = (req, res, next) => {
   try {
   } catch (err) {
-    errorResponse(404, err);
+    res.status(400).json({
+      status: 'failed',
+      message: err.message,
+    });
   }
 };
 
 exports.ninthAnswer = (req, res, next) => {};
 try {
 } catch (err) {
-  errorResponse(404, err);
+  res.status(400).json({
+    status: 'failed',
+    message: err.message,
+  });
 }
 
 exports.tenthAnswer = (req, res, next) => {
   try {
   } catch (err) {
-    errorResponse(404, err);
+    res.status(400).json({
+      status: 'failed',
+      message: err.message,
+    });
   }
 };

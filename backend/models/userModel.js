@@ -5,6 +5,7 @@ const userSchema = new mongoose.Schema({
   teamName: {
     type: String,
     required: [true, 'A user must belong to a team'],
+    unique: true,
   },
   password: {
     type: String,
