@@ -1,3 +1,24 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body {
+    background-image: url("../assets/star-sky-space.webp");
+}
+
+img {
+    animation: chill infinite 2.7s;
+    scale: 1.3;
+}
+
+@keyframes chill {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(1.5em);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
