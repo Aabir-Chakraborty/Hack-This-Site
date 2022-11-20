@@ -136,7 +136,7 @@ exports.fourthAnswer = (req, res, next) => {
 
 exports.fifthAnswer = (req, res, next) => {
   try {
-    const flag = req.body.answer >= 80 && req.body.answer <= 89 ? true : false;
+    const flag = req.body.answer === 'fmkg' ? true : false;
 
     res.status(200).json({
       status: 'success',

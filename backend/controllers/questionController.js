@@ -47,6 +47,7 @@ exports.firstQuestion = (req, res, next) => {
 
     res.status(200).json({
       status: 'success',
+      question: 'question',
       number,
     });
   } catch (err) {
@@ -60,11 +61,12 @@ exports.firstQuestion = (req, res, next) => {
 // Rejumbled
 exports.secondQuestion = (req, res, next) => {
   try {
-    const question = randomString(4);
+    const number = randomString(4);
 
     res.status(200).json({
       status: 'success',
-      question,
+      question: 'question',
+      number,
     });
   } catch (err) {
     res.status(400).json({
@@ -83,6 +85,7 @@ exports.thirdQuestion = (req, res, next) => {
 
     res.status(200).json({
       status: 'success',
+      question: 'question',
     });
   } catch (err) {
     res.status(400).json({
@@ -98,6 +101,7 @@ exports.fourthQuestion = (req, res, next) => {
 
   res.status(200).json({
     status: 'success',
+    question: 'question',
     answer: encrypt(answer),
   });
 };
@@ -105,11 +109,12 @@ exports.fourthQuestion = (req, res, next) => {
 // Proxy
 exports.fifthQuestion1 = (req, res, next) => {
   res.status(200).json({
+    question: 'question',
     status: 'success',
     food: 'biryani',
     taste: 'good',
     review: '5',
-    string: 'likely',
+    string: 'k',
     data: 'res.json',
     cool: 'strigify',
   });
@@ -117,10 +122,11 @@ exports.fifthQuestion1 = (req, res, next) => {
 exports.fifthQuestion2 = (req, res, next) => {
   res.status(200).json({
     status: 'success',
+    question: 'question',
     food: 'biryani',
     taste: 'good',
     review: '5',
-    string: Math.floor(Math.random() * 9 + 80),
+    string: 'g',
     data: 'res.json',
     cool: 'stringify',
   });
@@ -128,10 +134,11 @@ exports.fifthQuestion2 = (req, res, next) => {
 exports.fifthQuestion3 = (req, res, next) => {
   res.status(200).json({
     status: 'success',
+    question: 'question',
     food: 'yagi',
     taste: 'ok',
     review: '3',
-    string: 'correct',
+    string: 'm',
     data: 'res.json',
     cool: 'stringiy',
   });
@@ -139,16 +146,22 @@ exports.fifthQuestion3 = (req, res, next) => {
 exports.fifthQuestion4 = (req, res, next) => {
   res.status(200).json({
     status: 'success',
+    question: 'question',
     food: 'paneer',
     taste: 'good',
     review: '4.5',
-    string: 'almost',
+    string: 'f',
     data: 'res.json',
     cool: 'stringfy',
   });
 };
 
-exports.sixthQuestion = (req, res, next) => {};
+exports.sixthQuestion = (req, res, next) => {
+  res.status(200).json({
+    status: 'success',
+    flag: 'link',
+  });
+};
 
 exports.seventhQuestion = (req, res, next) => {};
 
