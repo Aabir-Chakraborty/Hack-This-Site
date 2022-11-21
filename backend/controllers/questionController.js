@@ -47,7 +47,8 @@ exports.firstQuestion = (req, res, next) => {
 
     res.status(200).json({
       status: 'success',
-      question: 'question',
+      question:
+        'Irure dolore excepteur quis laboris commodo tempor Culpa magna minim eu nostrud. Non consequat ea proident id mollit excepteur. Et in adipisicing reprehenderit eu officia duis.',
       number,
     });
   } catch (err) {
@@ -65,7 +66,8 @@ exports.secondQuestion = (req, res, next) => {
 
     res.status(200).json({
       status: 'success',
-      question: 'question',
+      question:
+        'Aute aliquip sunt elit cillum est sit enim ipsum aute magna ad minim. Ea commodo pariatur officia enim labore anim id tempor ut eu. Reprehenderit magna tempor et eu ea veniam nostrud id esse minim. Cillum.',
       number,
     });
   } catch (err) {
@@ -85,7 +87,9 @@ exports.thirdQuestion = (req, res, next) => {
 
     res.status(200).json({
       status: 'success',
-      question: 'question',
+      question:
+        'Aute aliquip sunt elit cillum est sit enim ipsum aute magna ad minim. Ea commodo pariatur officia enim labore anim id tempor ut eu. Reprehenderit magna tempor et eu ea veniam nostrud id esse minim. Cillum.',
+      link: 'fhjsdaodoa',
     });
   } catch (err) {
     res.status(400).json({
@@ -101,15 +105,17 @@ exports.fourthQuestion = (req, res, next) => {
 
   res.status(200).json({
     status: 'success',
-    question: 'question',
-    answer: encrypt(answer),
+    question:
+      'Aute aliquip sunt elit cillum est sit enim ipsum aute magna ad minim. Ea commodo pariatur officia enim labore anim id tempor ut eu. Reprehenderit magna tempor et eu ea veniam nostrud id esse minim. Cillum.',
+    link: 'jnfaneajkw',
   });
 };
 
 // Proxy
 exports.fifthQuestion1 = (req, res, next) => {
   res.status(200).json({
-    question: 'question',
+    question:
+      'Aute aliquip sunt elit cillum est sit enim ipsum aute magna ad minim. Ea commodo pariatur officia enim labore anim id tempor ut eu. Reprehenderit magna tempor et eu ea veniam nostrud id esse minim. Cillum.',
     status: 'success',
     food: 'biryani',
     taste: 'good',
@@ -122,7 +128,8 @@ exports.fifthQuestion1 = (req, res, next) => {
 exports.fifthQuestion2 = (req, res, next) => {
   res.status(200).json({
     status: 'success',
-    question: 'question',
+    question:
+      'Aute aliquip sunt elit cillum est sit enim ipsum aute magna ad minim. Ea commodo pariatur officia enim labore anim id tempor ut eu. Reprehenderit magna tempor et eu ea veniam nostrud id esse minim. Cillum.',
     food: 'biryani',
     taste: 'good',
     review: '5',
@@ -134,7 +141,8 @@ exports.fifthQuestion2 = (req, res, next) => {
 exports.fifthQuestion3 = (req, res, next) => {
   res.status(200).json({
     status: 'success',
-    question: 'question',
+    question:
+      'Aute aliquip sunt elit cillum est sit enim ipsum aute magna ad minim. Ea commodo pariatur officia enim labore anim id tempor ut eu. Reprehenderit magna tempor et eu ea veniam nostrud id esse minim. Cillum.',
     food: 'yagi',
     taste: 'ok',
     review: '3',
@@ -146,7 +154,8 @@ exports.fifthQuestion3 = (req, res, next) => {
 exports.fifthQuestion4 = (req, res, next) => {
   res.status(200).json({
     status: 'success',
-    question: 'question',
+    question:
+      'Aute aliquip sunt elit cillum est sit enim ipsum aute magna ad minim. Ea commodo pariatur officia enim labore anim id tempor ut eu. Reprehenderit magna tempor et eu ea veniam nostrud id esse minim. Cillum.',
     food: 'paneer',
     taste: 'good',
     review: '4.5',
@@ -158,12 +167,19 @@ exports.fifthQuestion4 = (req, res, next) => {
 
 exports.sixthQuestion = (req, res, next) => {
   res.status(200).json({
-    status: 'success',
-    flag: 'link',
+    status:
+      'Aute aliquip sunt elit cillum est sit enim ipsum aute magna ad minim. Ea commodo pariatur officia enim labore anim id tempor ut eu. Reprehenderit magna tempor et eu ea veniam nostrud id esse minim. Cillum.',
+    link: 'jasdi9adaodw',
   });
 };
 
-exports.seventhQuestion = (req, res, next) => {};
+exports.seventhQuestion = (req, res, next) => {
+  res.status(200).json({
+    status:
+      'Aute aliquip sunt elit cillum est sit enim ipsum aute magna ad minim. Ea commodo pariatur officia enim labore anim id tempor ut eu. Reprehenderit magna tempor et eu ea veniam nostrud id esse minim. Cillum.',
+    link: 'jdfhawifwiaf',
+  });
+};
 
 exports.eighthQuestion = (req, res, next) => {};
 
