@@ -1,23 +1,36 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import { useSelector } from "react-redux"
 import { ArrowLeftCircleIcon } from "@heroicons/react/24/solid"
 
 import "../styles/questions.css"
 
-const fetchDataText = {
-    text: `Lorem ipsum dolor sit amet consectetur adipisicing elit. A at vel recusandae quos sed rem blanditiis vero harum, enim aliquid in perspiciatis nisi? Quasi accusantium eaque placeat! Tempora, blanditiis distinctio?
-    Modi, natus ad ipsam perspiciatis sapiente repellat, libero debitis, vitae obcaecati quos officiis ipsa porro.Quo, exercitationem voluptatum inventore ipsa magnam sequi soluta, quibusdam ea nihil, temporibus maxime atque officia.
-        Dolores, non.Quibusdam quam nulla laudantium laboriosam, sit molestias cumque.Placeat ullam rem vel explicabo libero facilis, tempore quam quisquam quo quia nihil quis officia enim sunt in rerum.Recusandae.
-            Mollitia, explicabo corrupti? Placeat dolorum tempore expedita dignissimos quibusdam libero adipisci iusto, earum, inventore quis, alias repudiandae? Soluta, nostrum perferendis.Quia repellat delectus debitis dolores tempora quas dignissimos perspiciatis at.
-    Animi veniam rem dolores doloremque voluptatem nisi saepe dolore error fugit quas distinctio et exercitationem earum similique, non doloribus iusto, repellat nihil odio voluptates, neque aspernatur eum ipsa! Adipisci, obcaecati!`
-}
-
 
 export default function Question() {
-    const param = useParams();
+    const [question, setQuestion] = useState("");
+    const param = useParams();  // the param object now has the data 
+
+    const authState = useSelector(state => state.auth)
 
     useEffect(() => {
-        console.log(param);
+        const getData = async () => {
+            let response;
+            try {
+                response = await fetch(`http://localhost:8000/api/v1/questions/round/${param.rno}/question/${param.id}`, {
+                    method: "GET",
+                    headers: {
+                        'Authorization': `Bearer ${authState.token}`,
+                        'Content-type': "application/json",
+                    },
+                }).then(response => response.json()).catch(e => {
+                    throw e
+                })
+                setQuestion(response.question);
+            } catch (err) {
+                console.log(err);
+            }
+        }
+        getData();
     }, [])
 
 
@@ -37,7 +50,7 @@ export default function Question() {
                     backgroundColor: "rgb(255,255,255,0.3)"
                 }}>
                     <p className="px-2 py-2  text-white">
-                        {fetchDataText.text}
+                        {question}
                     </p>
                 </div>
                 <div className="mx-auto my-8  flex flex-col justify-center align-middle gap-8 ">
