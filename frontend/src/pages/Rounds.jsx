@@ -30,24 +30,24 @@ export default function Rounds() {
                     <FlagIcon className="h-20 relative top-5 left-4" />
                 </div>
                 <div className="text-white flex flex-row justify-evenly mt-7">
-                    <Link to={'/question/1'} className="ques-links">Ques-1</Link>
-                    <Link to={'/question/2'} className="ques-links">Ques-2</Link>
-                    <Link to={'/question/3'} className="ques-links">Ques-3</Link>
-                    <Link to={'/question/4'} className="ques-links">Ques-4</Link>
+                    <Link to={'question/1'} className="ques-links">Ques-1</Link>
+                    <Link to={'question/2'} className="ques-links">Ques-2</Link>
+                    <Link to={'question/3'} className="ques-links">Ques-3</Link>
+                    <Link to={'question/4'} className="ques-links">Ques-4</Link>
                 </div>
             </div>
             <div className="flex flex-row justify-around mt-9">
-                <button disabled={isPrevDisabled} className={`text-black text-lg font-semibold bg-gradient-to-tr  from-pink-500 to-red-500 rounded-xl px-9 py-3 ${isPrevDisabled && 'cursor-not-allowed'}`}>
+                <button disabled={isPrevDisabled} className={`text-black text-lg font-semibold bg-gradient-to-tr  from-pink-500 to-red-500 rounded-xl py-3 ${isPrevDisabled && 'cursor-not-allowed opacity-50'}`}>
                     {isPrevDisabled ?
-                        <span>Previous round</span>
+                        <span className="px-9">Previous round</span>
                         :
-                        <Link to={`/round/${+roundParam.rno - 1}`} >Previous round</Link>
+                        <Link to={`/round/${+roundParam.rno - 1}`} className={"px-9 py-3"} >Previous round</Link>
                     }
                 </button>
-                <button disabled={isNextDisabled} className={`text-black text-lg font-semibold bg-gradient-to-tr from-pink-500 to-red-500 rounded-xl px-9 py-3 ${isNextDisabled && "cursor-not-allowed"}`}>
+                <button disabled={isNextDisabled} className={`text-black text-lg font-semibold bg-gradient-to-tr from-pink-500 to-red-500 rounded-xl py-3 ${isNextDisabled && "cursor-not-allowed opacity-50"}`}>
                     {isNextDisabled ?
-                        <span>Next round</span> :
-                        <Link to={`/round/${+roundParam.rno + 1}`} >Next page</Link>
+                        <span className="px-9">Next round</span> :
+                        <Link to={`/round/${+roundParam.rno + 1}`} className={'px-9 py-3'} >Next round</Link>
                     }
                 </button>
             </div>

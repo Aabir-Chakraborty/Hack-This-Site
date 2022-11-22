@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { Routes, Route, useNavigate } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import { Provider } from "react-redux";
 
 import Login from "./pages/Login";
@@ -16,10 +16,7 @@ function ReturnBack() {
     return <></>;
 }
 
-
 export default function App() {
-    const nav = useNavigate();
-
     // useEffect(() => {
     //     if (!isAuthenticated && !token) {
     //         return nav("/");
@@ -33,8 +30,12 @@ export default function App() {
             <Provider store={store}>
                 <Routes>
                     <Route path="/" element={<Login />} />
-                    <Route path="/round/:rno" element={<Rounds />} />
-                    <Route path="/question/:id" element={<Question />} />
+                    <Route path="/round/:rno" element={<Rounds />}></Route>
+                    {/* <Route path="question/:id" element={<Question />} /> */}
+                    <Route
+                        path="/round/:rno/question/:id"
+                        element={<Question />}
+                    />
                     <Route path="*" element={<ReturnBack />} />
                 </Routes>
             </Provider>
