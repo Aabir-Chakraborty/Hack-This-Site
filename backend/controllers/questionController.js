@@ -39,17 +39,29 @@ const randomString = (len = 1) => {
 // Nth Root Algorithm
 exports.firstQuestion = (req, res, next) => {
   try {
+    res.status(200).json({
+      status: 'success',
+      name: 'Shoot',
+      question: 'Road to Salem',
+    });
+  } catch (err) {
+    res.status(400).json({
+      status: 'failed',
+      message: err.message,
+    });
+  }
+};
+// Nth Root Algorithm number generator
+exports.firstQuestion1 = (req, res, next) => {
+  try {
     let number = 0;
     console.log(number);
     while (number % 10 == 0) {
       number = Math.floor(Math.random() * 89 + 10);
     }
-
     res.status(200).json({
       status: 'success',
-      question:
-        'Irure dolore excepteur quis laboris commodo tempor Culpa magna minim eu nostrud. Non consequat ea proident id mollit excepteur. Et in adipisicing reprehenderit eu officia duis.',
-      number,
+      data: number,
     });
   } catch (err) {
     res.status(400).json({
@@ -62,13 +74,12 @@ exports.firstQuestion = (req, res, next) => {
 // Rejumbled
 exports.secondQuestion = (req, res, next) => {
   try {
-    const number = randomString(4);
+    const string = randomString(4);
 
     res.status(200).json({
       status: 'success',
-      question:
-        'Aute aliquip sunt elit cillum est sit enim ipsum aute magna ad minim. Ea commodo pariatur officia enim labore anim id tempor ut eu. Reprehenderit magna tempor et eu ea veniam nostrud id esse minim. Cillum.',
-      number,
+      name: 'Never Give Up',
+      data: string,
     });
   } catch (err) {
     res.status(400).json({
@@ -81,15 +92,28 @@ exports.secondQuestion = (req, res, next) => {
 // Cookie hider
 exports.thirdQuestion = (req, res, next) => {
   try {
+    res.status(200).json({
+      status: 'success',
+      name: 'Yummm',
+      question: 'Tim Hortons > Starbucks',
+      link: 'fhjsdaodoa',
+    });
+  } catch (err) {
+    res.status(400).json({
+      status: 'failed',
+      message: err.message,
+    });
+  }
+};
+// Cookie hider generator
+exports.thirdQuestion = (req, res, next) => {
+  try {
     const answer = randomString(12);
 
     res.cookie(':)', answer);
 
     res.status(200).json({
       status: 'success',
-      question:
-        'Aute aliquip sunt elit cillum est sit enim ipsum aute magna ad minim. Ea commodo pariatur officia enim labore anim id tempor ut eu. Reprehenderit magna tempor et eu ea veniam nostrud id esse minim. Cillum.',
-      link: 'fhjsdaodoa',
     });
   } catch (err) {
     res.status(400).json({
@@ -101,23 +125,49 @@ exports.thirdQuestion = (req, res, next) => {
 
 // Component Hider
 exports.fourthQuestion = (req, res, next) => {
-  const answer = randomString(12);
+  try {
+    res.status(200).json({
+      status: 'success',
+      name: 'Flip',
+      link: 'jnfaneajkw',
+    });
+  } catch (err) {
+    res.status(400).json({
+      status: 'failed',
+      message: err.message,
+    });
+  }
+};
+// Component Hider Generator
+exports.fourthQuestion = (req, res, next) => {
+  try {
+    const answer = encrypt(randomString(12));
 
-  res.status(200).json({
-    status: 'success',
-    question:
-      'Aute aliquip sunt elit cillum est sit enim ipsum aute magna ad minim. Ea commodo pariatur officia enim labore anim id tempor ut eu. Reprehenderit magna tempor et eu ea veniam nostrud id esse minim. Cillum.',
-    link: 'jnfaneajkw',
-  });
+    res.status(200).json({
+      status: 'success',
+      data: answer,
+    });
+  } catch (err) {
+    res.status(400).json({
+      status: 'failed',
+      message: err.message,
+    });
+  }
 };
 
 // Proxy
 exports.fifthQuestion = (req, res, next) => {
-  res.status(200).json({
-    question:
-      'Aute aliquip sunt elit cillum est sit enim ipsum aute magna ad minim. Ea commodo pariatur officia enim labore anim id tempor ut eu. Reprehenderit magna tempor et eu ea veniam nostrud id esse minim. Cillum.',
-    link: 'ahduandiuas',
-  });
+  try {
+    res.status(200).json({
+      name: 'Apes',
+      link: 'ahduandiuas',
+    });
+  } catch (err) {
+    res.status(400).json({
+      status: 'failed',
+      message: err.message,
+    });
+  }
 };
 exports.fifthQuestion1 = (req, res, next) => {
   res.status(200).json({
@@ -165,25 +215,94 @@ exports.fifthQuestion4 = (req, res, next) => {
 };
 
 exports.sixthQuestion = (req, res, next) => {
-  res.status(200).json({
-    status:
-      'Aute aliquip sunt elit cillum est sit enim ipsum aute magna ad minim. Ea commodo pariatur officia enim labore anim id tempor ut eu. Reprehenderit magna tempor et eu ea veniam nostrud id esse minim. Cillum.',
-    link: 'jasdi9adaodw',
-  });
+  try {
+    res.status(200).json({
+      status: 'success',
+      name: 'Detective',
+      link: '221B street',
+    });
+  } catch (err) {
+    res.status(400).json({
+      status: 'success',
+      message: err.message,
+    });
+  }
 };
 
 exports.seventhQuestion = (req, res, next) => {
-  res.status(200).json({
-    status:
-      'Aute aliquip sunt elit cillum est sit enim ipsum aute magna ad minim. Ea commodo pariatur officia enim labore anim id tempor ut eu. Reprehenderit magna tempor et eu ea veniam nostrud id esse minim. Cillum.',
-    link: 'jdfhawifwiaf',
-  });
+  try {
+    res.status(200).json({
+      status: 'success',
+      name: 'Login',
+      link: 'jdfhawifwiaf',
+    });
+  } catch (err) {
+    res.status(400).json({
+      status: 'failed',
+      message: err.message,
+    });
+  }
 };
 
-exports.eighthQuestion = (req, res, next) => {};
+exports.eighthQuestion = (req, res, next) => {
+  try {
+    res.status(200).json({
+      status: 'success',
+      name: 'Nalin',
+      question: 'Nalin',
+      link: 'Nalin',
+    });
+  } catch (err) {
+    res.status(400).json({
+      status: 'failed',
+      message: err.message,
+    });
+  }
+};
 
-exports.ninthQuestion = (req, res, next) => {};
+exports.ninthQuestion = (req, res, next) => {
+  try {
+    res.status(200).json({
+      status: 'success',
+      name: 'Hello',
+      question: 'Welcome to the site please introduce yourself to us',
+      link: 'placeholder',
+    });
+  } catch (err) {
+    res.status(400).json({
+      status: 'failed',
+      message: err.message,
+    });
+  }
+};
 
-exports.tenthQuestion = (req, res, next) => {};
+exports.tenthQuestion = (req, res, next) => {
+  try {
+    res.status(200).json({
+      status: 'success',
+      name: 'The Big Three',
+      link: 'reversing file',
+    });
+  } catch (err) {
+    res.status(400).json({
+      status: 'failed',
+      message: err.message,
+    });
+  }
+};
 
-exports.eleventhQuestion = (req, res, next) => {};
+exports.eleventhQuestion = (req, res, next) => {
+  try {
+    res.status(200).json({
+      status: 'success',
+      name: 'Nalin',
+      question: 'Nalin',
+      link: 'Nalin',
+    });
+  } catch (err) {
+    res.status(400).json({
+      status: 'failed',
+      message: err.message,
+    });
+  }
+};

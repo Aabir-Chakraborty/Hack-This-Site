@@ -8,6 +8,7 @@ const router = express.Router();
 router.use(authController.protect);
 
 router.get('/round/1/question/1', questionController.firstQuestion);
+router.get('/round/1/question/11', questionController.firstQuestion1);
 router.get('/round/1/question/2', questionController.secondQuestion);
 router.get('/round/1/question/3', questionController.thirdQuestion);
 router.get('/round/1/question/4', questionController.fourthQuestion);
