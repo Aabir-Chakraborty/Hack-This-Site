@@ -1,10 +1,31 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+function getCookie(cName) {
+    const name = cName + "=";
+    const cDecoded = decodeURIComponent(document.cookie); //to be careful
+    const cArr = cDecoded.split("; ");
+    let res;
+    cArr.forEach((val) => {
+        if (val.indexOf(name) === 0) res = val.substring(name.length);
+    });
+    return res;
+}
+
+function initialState(cookieName) {
+    let value = document.cookie.indexOf(`${cookieName}=`);
+    if (value === -1) {
+        return "";
+    }
+    return getCookie(cookieName);
+}
+
+// userToken
+
 const authSlice = createSlice({
     name: "auth",
     initialState: {
-        token: "",
-        isAuthenticated: false,
+        token: initialState("userToken"),
+        isAuthenticated: !!initialState("userToken"),
     },
     reducers: {
         setAuthenticate: (state, action) => {

@@ -52,9 +52,6 @@ export default function LoginForm() {
                 throw resData.message
             }
 
-            // setUserToken(resData.token)
-            // tokenCtx.setUserToken(resData.token);
-            console.log(resData.token);
             dispatch(setAuthenticate({
                 jwtToken: resData.token,
             }))
