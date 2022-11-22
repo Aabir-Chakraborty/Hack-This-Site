@@ -112,10 +112,15 @@ exports.fourthQuestion = (req, res, next) => {
 };
 
 // Proxy
-exports.fifthQuestion1 = (req, res, next) => {
+exports.fifthQuestion = (req, res, next) => {
   res.status(200).json({
     question:
       'Aute aliquip sunt elit cillum est sit enim ipsum aute magna ad minim. Ea commodo pariatur officia enim labore anim id tempor ut eu. Reprehenderit magna tempor et eu ea veniam nostrud id esse minim. Cillum.',
+    link: 'ahduandiuas',
+  });
+};
+exports.fifthQuestion1 = (req, res, next) => {
+  res.status(200).json({
     status: 'success',
     food: 'biryani',
     taste: 'good',
@@ -128,8 +133,6 @@ exports.fifthQuestion1 = (req, res, next) => {
 exports.fifthQuestion2 = (req, res, next) => {
   res.status(200).json({
     status: 'success',
-    question:
-      'Aute aliquip sunt elit cillum est sit enim ipsum aute magna ad minim. Ea commodo pariatur officia enim labore anim id tempor ut eu. Reprehenderit magna tempor et eu ea veniam nostrud id esse minim. Cillum.',
     food: 'biryani',
     taste: 'good',
     review: '5',
@@ -141,8 +144,6 @@ exports.fifthQuestion2 = (req, res, next) => {
 exports.fifthQuestion3 = (req, res, next) => {
   res.status(200).json({
     status: 'success',
-    question:
-      'Aute aliquip sunt elit cillum est sit enim ipsum aute magna ad minim. Ea commodo pariatur officia enim labore anim id tempor ut eu. Reprehenderit magna tempor et eu ea veniam nostrud id esse minim. Cillum.',
     food: 'yagi',
     taste: 'ok',
     review: '3',
@@ -154,8 +155,6 @@ exports.fifthQuestion3 = (req, res, next) => {
 exports.fifthQuestion4 = (req, res, next) => {
   res.status(200).json({
     status: 'success',
-    question:
-      'Aute aliquip sunt elit cillum est sit enim ipsum aute magna ad minim. Ea commodo pariatur officia enim labore anim id tempor ut eu. Reprehenderit magna tempor et eu ea veniam nostrud id esse minim. Cillum.',
     food: 'paneer',
     taste: 'good',
     review: '4.5',
@@ -186,3 +185,5 @@ exports.eighthQuestion = (req, res, next) => {};
 exports.ninthQuestion = (req, res, next) => {};
 
 exports.tenthQuestion = (req, res, next) => {};
+
+exports.eleventhQuestion = (req, res, next) => {};
