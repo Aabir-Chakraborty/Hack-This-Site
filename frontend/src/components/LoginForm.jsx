@@ -1,7 +1,9 @@
 import { useState, useContext } from "react"
+import { useSelector, useDispatch } from "react-redux"
 import { useNavigate } from "react-router-dom"
 
-import { AuthContext } from "../context/AuthContext";
+// import { AuthContext } from "../context/AuthContext";
+import { setAuthenticate } from "../store/authSlice";
 
 
 export default function LoginForm() {
@@ -10,9 +12,11 @@ export default function LoginForm() {
 
     const [errorMessage, setErrorMessage] = useState("");
 
-    const tokenCtx = useContext(AuthContext)
+    // const tokenCtx = useContext(AuthContext)
+    const auth = useSelector(state => state.auth)
 
     const nav = useNavigate();
+    const dispatch = useDispatch();
 
     const teamNameChangeHandler = e => {
         if (errorMessage !== "") {
@@ -49,7 +53,11 @@ export default function LoginForm() {
             }
 
             // setUserToken(resData.token)
-            tokenCtx.setUserToken(resData.token);
+            // tokenCtx.setUserToken(resData.token);
+            console.log(resData.token);
+            dispatch(setAuthenticate({
+                jwtToken: resData.token,
+            }))
 
             nav("/round/1");  // navigate to questions page
         } catch (err) {

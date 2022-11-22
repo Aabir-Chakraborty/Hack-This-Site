@@ -1,11 +1,12 @@
-import { useContext, useEffect } from "react";
+import { useEffect } from "react";
 import { Routes, Route, useNavigate } from "react-router-dom";
+import { Provider } from "react-redux";
 
 import Login from "./pages/Login";
 import Rounds from "./pages/Rounds";
 import Question from "./pages/Question";
 
-import AuthContextProvider, { AuthContext } from "./context/AuthContext";
+import store from "./store/index";
 
 function ReturnBack() {
     useEffect(() => {
@@ -15,9 +16,8 @@ function ReturnBack() {
     return <></>;
 }
 
-export default function App() {
-    const { isAuthenticated, token } = useContext(AuthContext);
 
+export default function App() {
     const nav = useNavigate();
 
     // useEffect(() => {
@@ -30,17 +30,14 @@ export default function App() {
 
     return (
         <>
-            <AuthContextProvider>
+            <Provider store={store}>
                 <Routes>
                     <Route path="/" element={<Login />} />
-                    <Route path="/round">
-                        <Route path=":rno" element={<Rounds />}>
-                            <Route path="question/:id" element={<Question />} />
-                        </Route>
-                    </Route>
+                    <Route path="/round/:rno" element={<Rounds />} />
+                    <Route path="/question/:id" element={<Question />} />
                     <Route path="*" element={<ReturnBack />} />
                 </Routes>
-            </AuthContextProvider>
+            </Provider>
         </>
     );
 }

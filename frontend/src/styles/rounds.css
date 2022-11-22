@@ -7,6 +7,6 @@ main#rounds {
 
 .ques-links {
     /* background-image: linear-gradient(50deg,#c2a8c1,#8b2d87); */
-    @apply  hover:scale-125 transition-all px-10 py-3 rounded-lg font-bold  bg-blue-800   text-black text-xl
+    @apply  hover:scale-110 transition-all px-10 py-3 rounded-lg font-bold  bg-blue-800   text-black text-xl
     
 }
