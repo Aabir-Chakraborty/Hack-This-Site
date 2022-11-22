@@ -2,8 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
+body{
+    font: 'dejavu-sans-mono';
+}
+
+main#login {
     background-image: url("../assets/star-sky-space.webp");
+    background-size: cover;
+    height: 100vh;
 }
 
 img {
