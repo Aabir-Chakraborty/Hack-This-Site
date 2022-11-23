@@ -41,8 +41,7 @@ exports.firstQuestion = (req, res, next) => {
   try {
     res.status(200).json({
       status: 'success',
-      name: 'Shoot',
-      question: 'Road to Salem',
+      name: 'RootN',
       link: 'hjdijad',
     });
   } catch (err) {
@@ -78,7 +77,7 @@ exports.secondQuestion = (req, res, next) => {
     res.status(200).json({
       status: 'success',
       name: 'Never Give Up',
-      link: 'jdadoakas',
+      link: 'https://jumbler2.netlify.app/',
     });
   } catch (err) {
     res.status(400).json({
@@ -92,8 +91,7 @@ exports.secondQuestion1 = (req, res, next) => {
     const string = lkcj;
     res.status(200).json({
       status: 'success',
-      name: 'Never Give Up',
-      link: 'jdadoakas',
+      string,
     });
   } catch (err) {
     res.status(400).json({
@@ -175,7 +173,7 @@ exports.fifthQuestion = (req, res, next) => {
   try {
     res.status(200).json({
       name: 'Apes',
-      link: 'ahduandiuas',
+      link: 'https://proxy11.netlify.app/',
     });
   } catch (err) {
     res.status(400).json({
@@ -190,7 +188,7 @@ exports.fifthQuestion1 = (req, res, next) => {
     food: 'biryani',
     taste: 'good',
     review: '5',
-    string: 'k',
+    string: 'att',
     data: 'res.json',
     cool: 'strigify',
   });
@@ -202,7 +200,7 @@ exports.fifthQuestion2 = (req, res, next) => {
     taste: 'good',
     review: '5',
     string: 'g',
-    data: 'res.json',
+    data: 'ach',
     cool: 'stringify',
   });
 };
@@ -212,7 +210,7 @@ exports.fifthQuestion3 = (req, res, next) => {
     food: 'yagi',
     taste: 'ok',
     review: '3',
-    string: 'm',
+    string: 'me',
     data: 'res.json',
     cool: 'stringiy',
   });
@@ -224,18 +222,18 @@ exports.fifthQuestion4 = (req, res, next) => {
     taste: 'good',
     review: '4.5',
     string: 'f',
-    data: 'res.json',
+    data: 'nt',
     cool: 'stringfy',
   });
 };
 
+// SHERLOCK
 exports.sixthQuestion = (req, res, next) => {
   try {
     res.status(200).json({
       status: 'success',
       name: 'Sherlock',
       question: 'awe45cnw094fnsdc0ww3',
-      link: '221B street',
     });
   } catch (err) {
     res.status(400).json({
@@ -245,11 +243,12 @@ exports.sixthQuestion = (req, res, next) => {
   }
 };
 
+// NoSQL
 exports.seventhQuestion = (req, res, next) => {
   try {
     res.status(200).json({
       status: 'success',
-      name: 'Login',
+      name: 'Bypass',
       link: 'jdfhawifwiaf',
     });
   } catch (err) {
@@ -264,8 +263,7 @@ exports.eighthQuestion = (req, res, next) => {
   try {
     res.status(200).json({
       status: 'success',
-      name: 'Nalin',
-      question: 'Nalin',
+      name: 'Pizza',
       link: 'Nalin',
     });
   } catch (err) {
@@ -276,11 +274,12 @@ exports.eighthQuestion = (req, res, next) => {
   }
 };
 
+// XSS
 exports.ninthQuestion = (req, res, next) => {
   try {
     res.status(200).json({
       status: 'success',
-      name: 'Hello',
+      name: 'Alert me',
       question: 'Welcome to the site please introduce yourself to us',
       link: 'placeholder',
     });
@@ -292,6 +291,7 @@ exports.ninthQuestion = (req, res, next) => {
   }
 };
 
+// Reversing
 exports.tenthQuestion = (req, res, next) => {
   try {
     res.status(200).json({
@@ -307,6 +307,7 @@ exports.tenthQuestion = (req, res, next) => {
   }
 };
 
+// Audio Visualizer
 exports.eleventhQuestion = (req, res, next) => {
   try {
     res.status(200).json({
