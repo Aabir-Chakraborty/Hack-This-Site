@@ -10,7 +10,7 @@ exports.getMe = (req, res, next) => {
 exports.leaderboard = async (req, res, next) => {
   try {
     // FILTER USERS WITH CHEAT ATTEMPTS LESS THAN 3 THEN SORT ON THE BASIS OF SCORE IN DESCENDING ORDER
-    const users = await User.find().sort({ score: -1 });
+    const users = await User.find().sort({ totalFlags: -1 });
 
     // SEND NUMBER OF NOT-DISQUALIFIED MEMBERS AND LEADERBOARD
     res.status(200).json({
