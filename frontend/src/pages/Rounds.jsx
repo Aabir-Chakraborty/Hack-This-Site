@@ -13,6 +13,12 @@ export default function Rounds() {
         if (roundParam.rno === '1') {
             setPrevDisabled(true);
         }
+        else if (roundParam.rno === '4') {
+            setNextDisabled(true);
+        } else {
+            setPrevDisabled(false);
+            setNextDisabled(false);
+        }
     }, [roundParam])
 
 
@@ -31,17 +37,21 @@ export default function Rounds() {
                 </div>
             </div>
             <div className="flex flex-row justify-around mt-9">
+<<<<<<< HEAD
                 <button disabled={isPrevDisabled} className={`text-black text-lg font-semibold bg-gradient-to-tr  from-pink-500 to-red-500 rounded-xl px-9 py-3 ${isPrevDisabled && 'cursor-not-allowed'}`}>
+=======
+                <button disabled={isPrevDisabled} className={`text-black text-lg font-semibold bg-gradient-to-tr  from-pink-500 to-red-500 rounded-xl py-3 ${isPrevDisabled && 'cursor-not-allowed opacity-50'}`}>
+>>>>>>> 5e0f03dd76bff2de4bd94e692028866ea4ed4636
                     {isPrevDisabled ?
-                        <span>Previous round</span>
+                        <span className="px-9">Previous round</span>
                         :
-                        <Link to={`/round/${+roundParam.rno - 1}`} >Previous round</Link>
+                        <Link to={`/round/${+roundParam.rno - 1}`} className={"px-9 py-3"} >Previous round</Link>
                     }
                 </button>
-                <button disabled={isNextDisabled} className={`text-black text-lg font-semibold bg-gradient-to-tr from-pink-500 to-red-500 rounded-xl px-9 py-3`}>
+                <button disabled={isNextDisabled} className={`text-black text-lg font-semibold bg-gradient-to-tr from-pink-500 to-red-500 rounded-xl py-3 ${isNextDisabled && "cursor-not-allowed opacity-50"}`}>
                     {isNextDisabled ?
-                        <span>Next round</span> :
-                        <Link to={`/round/${+roundParam.rno + 1}`} >Next page</Link>
+                        <span className="px-9">Next round</span> :
+                        <Link to={`/round/${+roundParam.rno + 1}`} className={'px-9 py-3'} >Next round</Link>
                     }
                 </button>
             </div>

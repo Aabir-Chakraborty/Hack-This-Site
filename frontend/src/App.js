@@ -1,11 +1,10 @@
-import { useContext, useEffect } from "react";
+import { useEffect } from "react";
 import { Routes, Route, useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 import Login from "./pages/Login";
 import Rounds from "./pages/Rounds";
 import Question from "./pages/Question";
-
-import AuthContextProvider, { AuthContext } from "./context/AuthContext";
 
 function ReturnBack() {
     useEffect(() => {
@@ -16,31 +15,23 @@ function ReturnBack() {
 }
 
 export default function App() {
-    const { isAuthenticated, token } = useContext(AuthContext);
+    const authState = useSelector((state) => state.auth);
+    const navigation = useNavigate();
 
-    const nav = useNavigate();
-
-    // useEffect(() => {
-    //     if (!isAuthenticated && !token) {
-    //         return nav("/");
-    //     } else {
-    //         return;
-    //     }
-    // }, [isAuthenticated, token]);
+    useEffect(() => {
+        if (!authState.isAuthenticated) {
+            navigation("/");
+        }
+    }, [authState.isAuthenticated]);
 
     return (
         <>
-            <AuthContextProvider>
-                <Routes>
-                    <Route path="/" element={<Login />} />
-                    <Route path="/round">
-                        <Route path=":rno" element={<Rounds />}>
-                            <Route path="question/:id" element={<Question />} />
-                        </Route>
-                    </Route>
-                    <Route path="*" element={<ReturnBack />} />
-                </Routes>
-            </AuthContextProvider>
+            <Routes>
+                <Route path="/" element={<Login />} />
+                <Route path="/round/:rno" element={<Rounds />}></Route>
+                <Route path="/round/:rno/question/:id" element={<Question />} />
+                <Route path="*" element={<ReturnBack />} />
+            </Routes>
         </>
     );
 }
