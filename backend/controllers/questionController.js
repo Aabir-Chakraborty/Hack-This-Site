@@ -114,6 +114,7 @@ exports.thirdQuestion = (req, res, next) => {
 
     res.status(200).json({
       status: 'success',
+      name: 'Purple',
     });
   } catch (err) {
     res.status(400).json({
