@@ -123,6 +123,7 @@ exports.thirdQuestion = (req, res, next) => {
 
     res.status(200).json({
       status: 'success',
+      name: 'Purple',
     });
   } catch (err) {
     res.status(400).json({
@@ -148,7 +149,7 @@ exports.fourthQuestion = (req, res, next) => {
   }
 };
 // Component Hider Generator
-exports.fourthQuestion = (req, res, next) => {
+exports.fourthQuestion1 = (req, res, next) => {
   try {
     const answer = encrypt(randomString(12));
 
@@ -227,7 +228,8 @@ exports.sixthQuestion = (req, res, next) => {
   try {
     res.status(200).json({
       status: 'success',
-      name: 'Detective',
+      name: 'Sherlock',
+      question: 'awe45cnw094fnsdc0ww3',
       link: '221B street',
     });
   } catch (err) {
@@ -304,8 +306,7 @@ exports.eleventhQuestion = (req, res, next) => {
   try {
     res.status(200).json({
       status: 'success',
-      name: 'Nalin',
-      question: 'Nalin',
+      name: 'Graph-ite',
       link: 'Nalin',
     });
   } catch (err) {

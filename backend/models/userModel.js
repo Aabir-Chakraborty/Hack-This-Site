@@ -33,6 +33,10 @@ const userSchema = new mongoose.Schema({
   },
 });
 
+userSchema.virtual('totalFlags').get(function () {
+  return this.flags[0] + this.flags[1] + this.flags[2];
+});
+
 // CREATING AN OBJECT USER BASED ON THE USER SCHEMA
 const User = mongoose.model('User', userSchema);
 
