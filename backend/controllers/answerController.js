@@ -242,6 +242,10 @@ exports.sixthAnswer = async (req, res, next) => {
         }
       );
     }
+    res.status(200).json({
+      status: 'success',
+      correct: flag,
+    });
   } catch (err) {
     res.status(400).json({
       status: 'failed',
@@ -268,6 +272,10 @@ exports.seventhAnswer = async (req, res, next) => {
         }
       );
     }
+    res.status(200).json({
+      status: 'success',
+      correct: flag,
+    });
   } catch (err) {
     res.status(400).json({
       status: 'failed',
@@ -297,7 +305,7 @@ exports.ninthAnswer = async (req, res, next) => {
       const updatedUser = await User.findByIdAndUpdate(
         req.params.id,
         {
-          flags: [user.flags[0], user.flags[1] + 1, user.flags[2]],
+          flags: [user.flags[0], user.flags[1], user.flags[2] + 1],
         },
         {
           new: true,
@@ -305,6 +313,10 @@ exports.ninthAnswer = async (req, res, next) => {
         }
       );
     }
+    res.status(200).json({
+      status: 'success',
+      correct: flag,
+    });
   } catch (err) {
     res.status(400).json({
       status: 'failed',
@@ -316,6 +328,25 @@ exports.ninthAnswer = async (req, res, next) => {
 // REVERSING
 exports.tenthAnswer = async (req, res, next) => {
   try {
+    const flag = req.body.answer === 'hts{45}' ? true : false;
+    if (flag) {
+      // Update user score and mark that he has attempted the test
+      const user = await User.findById(req.params.id);
+      const updatedUser = await User.findByIdAndUpdate(
+        req.params.id,
+        {
+          flags: [user.flags[0], user.flags[1], user.flags[2] + 1],
+        },
+        {
+          new: true,
+          runValidators: true,
+        }
+      );
+    }
+    res.status(200).json({
+      status: 'success',
+      correct: flag,
+    });
   } catch (err) {
     res.status(400).json({
       status: 'failed',
@@ -334,7 +365,7 @@ exports.eleventhAnswer = async (req, res, next) => {
       const updatedUser = await User.findByIdAndUpdate(
         req.params.id,
         {
-          flags: [user.flags[0], user.flags[1] + 1, user.flags[2]],
+          flags: [user.flags[0], user.flags[1], user.flags[2] + 1],
         },
         {
           new: true,
@@ -342,6 +373,10 @@ exports.eleventhAnswer = async (req, res, next) => {
         }
       );
     }
+    res.status(200).json({
+      status: 'success',
+      correct: flag,
+    });
   } catch (err) {
     res.status(400).json({
       status: 'failed',
