@@ -43,6 +43,7 @@ exports.firstQuestion = (req, res, next) => {
       status: 'success',
       name: 'Shoot',
       question: 'Road to Salem',
+      link: 'hjdijad',
     });
   } catch (err) {
     res.status(400).json({
@@ -77,7 +78,7 @@ exports.secondQuestion = (req, res, next) => {
     res.status(200).json({
       status: 'success',
       name: 'Never Give Up',
-      link: "jdadoakas"
+      link: 'jdadoakas',
     });
   } catch (err) {
     res.status(400).json({
@@ -86,18 +87,21 @@ exports.secondQuestion = (req, res, next) => {
     });
   }
 };
-exports.secondQuestion1=(req,res,next)=> {
+exports.secondQuestion1 = (req, res, next) => {
   try {
     const string = lkcj;
     res.status(200).json({
-    status: 'success',
-    name: 'Never Give Up',
-    link: "jdadoakas"
-  });} catch(err) { res.status(400).json({
-    status: 'failed',
-    message: err.message,
-  });}
-}
+      status: 'success',
+      name: 'Never Give Up',
+      link: 'jdadoakas',
+    });
+  } catch (err) {
+    res.status(400).json({
+      status: 'failed',
+      message: err.message,
+    });
+  }
+};
 
 // Cookie hider
 exports.thirdQuestion = (req, res, next) => {
