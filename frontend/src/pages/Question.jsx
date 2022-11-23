@@ -3,11 +3,12 @@ import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux"
 import { ArrowLeftCircleIcon } from "@heroicons/react/24/solid"
 
-import "../styles/questions.css"
-
 
 export default function Question() {
+    const [quesName, setQuesName] = useState("");
     const [question, setQuestion] = useState("");
+    const [linkName, setLinkName] = useState("");
+
     const param = useParams();  // the param object now has the data 
 
     const authState = useSelector(state => state.auth)
@@ -25,7 +26,9 @@ export default function Question() {
                 }).then(response => response.json()).catch(e => {
                     throw e
                 })
-                setQuestion(response.question);
+                setQuesName(response.name);
+                if (response.question) setQuestion(response.question);
+                if (response.link) setLinkName(response.link);
             } catch (err) {
                 console.log(err);
             }
@@ -34,9 +37,19 @@ export default function Question() {
     }, [])
 
 
-    const answerSubmitHandler = e => {
+    const answerSubmitHandler = async e => {
         e.preventDefault();
-
+        let url;
+        url = `http://localhost:8000/api/v1/answers/round/${param.rno}/answer/${param.id}`;
+        const methodDataObject = {
+            method: "POST",
+            headers: {
+                'Content-type': "application/json",
+                'Authorization': `Bearer ${authState.token}`
+            },
+            body: JSON.stringify(),
+        }
+        const sendAnswer = await fetch(url, methodDataObject);
     }
 
     return (
@@ -44,17 +57,24 @@ export default function Question() {
             <main id="questions" className="flex flex-col gap-14 py-28">
                 <div className="flex justify-center mx-11">
                     <ArrowLeftCircleIcon onClick={() => window.history.back()} className="h-12 transition hover:scale-110 cursor-pointer" style={{ color: 'rgb(255,255,255,0.8)' }} />
-                    <h1 className="text-white w-full text-4xl text-center ">Question name and number {param.id}</h1>
+                    <h1 className="text-white w-full text-4xl text-center  pr-12 ">{quesName}</h1>
                 </div>
-                <div className="rounded mx-11 px-3 py-1" style={{
-                    backgroundColor: "rgb(255,255,255,0.3)"
-                }}>
-                    <p className="px-2 py-2  text-white">
-                        {question}
-                    </p>
-                </div>
+                {!!question &&
+                    <div className="rounded mx-auto px-3 w-[38rem] py-1" style={{
+                        backgroundColor: "rgb(255,255,255,0.3)"
+                    }}>
+                        <p className="px-2 py-2 w-fit text-white">
+                            {question}
+                        </p>
+                    </div>
+                }
+                {!!linkName &&
+                    <>
+                        <a href={linkName} target={"blank"} className="border text-center w-fit mx-auto py-2 px-5 font-semibold text-xl transition-all hover:bg-white hover:text-black rounded-md text-white">Visit the link: {linkName}</a>
+                    </>
+                }
                 <div className="mx-auto my-8  flex flex-col justify-center align-middle gap-8 ">
-                    <label className="text-white text-3xl -mb-4">Enter your solution here</label>
+                    <label className="text-white text-3xl -mb-4">Enter the flag here</label>
                     <input type="text" style={{
                         background: "rgba(255,255,255,0.3)"
 

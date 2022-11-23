@@ -5,6 +5,7 @@ import { useSelector } from "react-redux";
 import Login from "./pages/Login";
 import Rounds from "./pages/Rounds";
 import Question from "./pages/Question";
+import LeaderBoard from "./pages/Leaderboards";
 
 function ReturnBack() {
     useEffect(() => {
@@ -30,6 +31,7 @@ export default function App() {
                 <Route path="/" element={<Login />} />
                 <Route path="/round/:rno" element={<Rounds />}></Route>
                 <Route path="/round/:rno/question/:id" element={<Question />} />
+                <Route path="/leaderboard" element={<LeaderBoard />} />
                 <Route path="*" element={<ReturnBack />} />
             </Routes>
         </>

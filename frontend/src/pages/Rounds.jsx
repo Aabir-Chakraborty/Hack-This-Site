@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom"
 import { FlagIcon } from "@heroicons/react/24/solid";
 
-import "../styles/rounds.css";
 
 export default function Rounds() {
     const [isPrevDisabled, setPrevDisabled] = useState(false);
@@ -13,7 +12,7 @@ export default function Rounds() {
         if (roundParam.rno === '1') {
             setPrevDisabled(true);
         }
-        else if (roundParam.rno === '4') {
+        else if (roundParam.rno === '3') {
             setNextDisabled(true);
         } else {
             setPrevDisabled(false);
@@ -33,20 +32,21 @@ export default function Rounds() {
                     <Link to={'question/1'} className="ques-links">Ques-1</Link>
                     <Link to={'question/2'} className="ques-links">Ques-2</Link>
                     <Link to={'question/3'} className="ques-links">Ques-3</Link>
-                    <Link to={'question/4'} className="ques-links">Ques-4</Link>
+                    {
+                        roundParam.rno !== '3' && <Link to={'question/4'} className="ques-links">Ques-4</Link>
+                    }
                 </div>
             </div>
             <div className="flex flex-row justify-around mt-9">
-<<<<<<< HEAD
-                <button disabled={isPrevDisabled} className={`text-black text-lg font-semibold bg-gradient-to-tr  from-pink-500 to-red-500 rounded-xl px-9 py-3 ${isPrevDisabled && 'cursor-not-allowed'}`}>
-=======
                 <button disabled={isPrevDisabled} className={`text-black text-lg font-semibold bg-gradient-to-tr  from-pink-500 to-red-500 rounded-xl py-3 ${isPrevDisabled && 'cursor-not-allowed opacity-50'}`}>
->>>>>>> 5e0f03dd76bff2de4bd94e692028866ea4ed4636
                     {isPrevDisabled ?
                         <span className="px-9">Previous round</span>
                         :
                         <Link to={`/round/${+roundParam.rno - 1}`} className={"px-9 py-3"} >Previous round</Link>
                     }
+                </button>
+                <button className="transition-all rounded-lg bg-gradient-to-tr from-pink-700 to-red-500 ">
+                    <Link to={`/leaderboard`} className="px-6 py-4 font-semibold" >Leaderboards</Link>
                 </button>
                 <button disabled={isNextDisabled} className={`text-black text-lg font-semibold bg-gradient-to-tr from-pink-500 to-red-500 rounded-xl py-3 ${isNextDisabled && "cursor-not-allowed opacity-50"}`}>
                     {isNextDisabled ?
