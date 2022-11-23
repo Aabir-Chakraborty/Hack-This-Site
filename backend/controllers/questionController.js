@@ -74,12 +74,10 @@ exports.firstQuestion1 = (req, res, next) => {
 // Rejumbled
 exports.secondQuestion = (req, res, next) => {
   try {
-    const string = randomString(4);
-
     res.status(200).json({
       status: 'success',
       name: 'Never Give Up',
-      data: string,
+      link: "jdadoakas"
     });
   } catch (err) {
     res.status(400).json({
@@ -88,6 +86,18 @@ exports.secondQuestion = (req, res, next) => {
     });
   }
 };
+exports.secondQuestion1=(req,res,next)=> {
+  try {
+    const string = lkcj;
+    res.status(200).json({
+    status: 'success',
+    name: 'Never Give Up',
+    link: "jdadoakas"
+  });} catch(err) { res.status(400).json({
+    status: 'failed',
+    message: err.message,
+  });}
+}
 
 // Cookie hider
 exports.thirdQuestion = (req, res, next) => {
@@ -140,7 +150,7 @@ exports.fourthQuestion = (req, res, next) => {
   }
 };
 // Component Hider Generator
-exports.fourthQuestion = (req, res, next) => {
+exports.fourthQuestion1 = (req, res, next) => {
   try {
     const answer = encrypt(randomString(12));
 
@@ -219,7 +229,8 @@ exports.sixthQuestion = (req, res, next) => {
   try {
     res.status(200).json({
       status: 'success',
-      name: 'Detective',
+      name: 'Sherlock',
+      question: 'awe45cnw094fnsdc0ww3',
       link: '221B street',
     });
   } catch (err) {
@@ -296,8 +307,7 @@ exports.eleventhQuestion = (req, res, next) => {
   try {
     res.status(200).json({
       status: 'success',
-      name: 'Nalin',
-      question: 'Nalin',
+      name: 'Graph-ite',
       link: 'Nalin',
     });
   } catch (err) {
