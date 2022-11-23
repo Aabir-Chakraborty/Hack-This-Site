@@ -5,6 +5,12 @@ const authController = require('../controllers/authController');
 
 const router = express.Router();
 
+router.post(
+  '/round/1/answer/11',
+  userController.getMe,
+  answerController.firstAnswer1
+);
+
 // USER MUST BE LOGGED IN TO ACCESS THE FOLLOWING ROUTES
 router.use(authController.protect);
 

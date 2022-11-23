@@ -36,7 +36,37 @@ function shuffle(s) {
   return s; // Return shuffled string
 }
 
-exports.firstAnswer = (req, res, next) => {
+// Nth ROOT
+exports.firstAnswer = async (req, res, next) => {
+  try {
+    let correct = false;
+    if (req.body.answer === 'hts{bUzZ3d}') {
+      correct = true;
+      // Update user score and mark that he has attempted the test
+      const user = await User.findById(req.params.id);
+      const updatedUser = await User.findByIdAndUpdate(
+        req.params.id,
+        {
+          flags: [user.flags[0] + 1, user.flags[1], user.flags[2]],
+        },
+        {
+          new: true,
+          runValidators: true,
+        }
+      );
+    }
+    res.status(200).json({
+      status: 'success',
+      correct,
+    });
+  } catch (err) {
+    res.status(400).json({
+      status: 'failed',
+      message: err.message,
+    });
+  }
+};
+exports.firstAnswer1 = (req, res, next) => {
   try {
     let correctAnswers = req.body.correctAnswers;
     const root = req.body.question % 10;
@@ -64,11 +94,78 @@ exports.firstAnswer = (req, res, next) => {
   }
 };
 
+// JUMBLER
 exports.secondAnswer = async (req, res, next) => {
   try {
-    const question = shuffle(req.body.question);
+    const question = shuffle('lkcj');
     const flag = question === req.body.answer ? true : false;
+    let correct = false;
 
+    if (flag) {
+      // Update user score and mark that he has attempted the test
+      correct = true;
+      const user = await User.findById(req.params.id);
+      const updatedUser = await User.findByIdAndUpdate(
+        req.params.id,
+        {
+          flags: [user.flags[0] + 1, user.flags[1], user.flags[2]],
+        },
+        {
+          new: true,
+          runValidators: true,
+        }
+      );
+    }
+
+    res.status(200).json({
+      status: 'success',
+      correct,
+    });
+  } catch (err) {
+    res.status(400).json({
+      status: 'failed',
+      message: err.message,
+    });
+  }
+};
+
+// COOKIE
+exports.thirdAnswer = async (req, res, next) => {
+  try {
+    if (req.body.answer === 'hts{g0t_m3_pUrP1e}') {
+      // Update user score and mark that he has attempted the test
+      correct = true;
+      const user = await User.findById(req.params.id);
+      const updatedUser = await User.findByIdAndUpdate(
+        req.params.id,
+        {
+          flags: [user.flags[0] + 1, user.flags[1], user.flags[2]],
+        },
+        {
+          new: true,
+          runValidators: true,
+        }
+      );
+    }
+    res.status(200).json({
+      status: 'success',
+      flag,
+    });
+  } catch (err) {
+    res.status(400).json({
+      status: 'failed',
+      message: err.message,
+    });
+  }
+};
+
+// COMPONENT HIDER
+exports.fourthAnswer = async (req, res, next) => {
+  try {
+    const question = req.body.question;
+    const answer = req.body.answer;
+
+    const flag = 'hts{c0sM1c_dAwN}' === answer ? true : false;
     if (flag) {
       // Update user score and mark that he has attempted the test
       const user = await User.findById(req.params.id);
@@ -86,7 +183,7 @@ exports.secondAnswer = async (req, res, next) => {
 
     res.status(200).json({
       status: 'success',
-      flag,
+      correct: flag,
     });
   } catch (err) {
     res.status(400).json({
@@ -96,16 +193,28 @@ exports.secondAnswer = async (req, res, next) => {
   }
 };
 
-exports.thirdAnswer = (req, res, next) => {
+// PROXY
+exports.fifthAnswer = async (req, res, next) => {
   try {
-    const question = req.body.question;
-    const answer = req.body.answer;
-
-    const flag = decrypt(question) === answer ? true : false;
+    const flag = req.body.answer === 'hts{att-ach-me-nt}' ? true : false;
+    if (flag) {
+      // Update user score and mark that he has attempted the test
+      const user = await User.findById(req.params.id);
+      const updatedUser = await User.findByIdAndUpdate(
+        req.params.id,
+        {
+          flags: [user.flags[0], user.flags[1] + 1, user.flags[2]],
+        },
+        {
+          new: true,
+          runValidators: true,
+        }
+      );
+    }
 
     res.status(200).json({
       status: 'success',
-      flag,
+      correct: flag,
     });
   } catch (err) {
     res.status(400).json({
@@ -115,53 +224,23 @@ exports.thirdAnswer = (req, res, next) => {
   }
 };
 
-exports.fourthAnswer = (req, res, next) => {
+// SHERLOCK
+exports.sixthAnswer = async (req, res, next) => {
   try {
-    const question = req.body.question;
-    const answer = req.body.answer;
-
-    const flag = decrypt(question) === answer ? true : false;
-
-    res.status(200).json({
-      status: 'success',
-      flag,
-    });
-  } catch (err) {
-    res.status(400).json({
-      status: 'failed',
-      message: err.message,
-    });
-  }
-};
-
-exports.fifthAnswer = (req, res, next) => {
-  try {
-    const flag = req.body.answer === 'fmkg' ? true : false;
-
-    res.status(200).json({
-      status: 'success',
-      flag,
-    });
-  } catch (err) {
-    res.status(400).json({
-      status: 'failed',
-      message: err.message,
-    });
-  }
-};
-
-exports.sixthAnswer = (req, res, next) => {
-  try {
-    if (req.body.answer === '3284923ire29') {
-      res.status(200).json({
-        status: 'success',
-        flag: true,
-      });
-    } else {
-      res.status(200).json({
-        status: 'success',
-        flag: false,
-      });
+    const flag = req.body.answer === 'hts{AC0n1ND0yL5}' ? true : false;
+    if (flag) {
+      // Update user score and mark that he has attempted the test
+      const user = await User.findById(req.params.id);
+      const updatedUser = await User.findByIdAndUpdate(
+        req.params.id,
+        {
+          flags: [user.flags[0], user.flags[1] + 1, user.flags[2]],
+        },
+        {
+          new: true,
+          runValidators: true,
+        }
+      );
     }
   } catch (err) {
     res.status(400).json({
@@ -171,18 +250,23 @@ exports.sixthAnswer = (req, res, next) => {
   }
 };
 
-exports.seventhAnswer = (req, res, next) => {
+// NoSQL QUERY INJECTION
+exports.seventhAnswer = async (req, res, next) => {
   try {
-    if (req.body.answer === '4759232') {
-      res.status(200).json({
-        status: 'success',
-        flag: true,
-      });
-    } else {
-      res.status(200).json({
-        status: 'success',
-        flag: false,
-      });
+    const flag = req.body.answer === 'hts{mY_p2S5}' ? true : false;
+    if (flag) {
+      // Update user score and mark that he has attempted the test
+      const user = await User.findById(req.params.id);
+      const updatedUser = await User.findByIdAndUpdate(
+        req.params.id,
+        {
+          flags: [user.flags[0], user.flags[1] + 1, user.flags[2]],
+        },
+        {
+          new: true,
+          runValidators: true,
+        }
+      );
     }
   } catch (err) {
     res.status(400).json({
@@ -192,6 +276,7 @@ exports.seventhAnswer = (req, res, next) => {
   }
 };
 
+// OCINT
 exports.eighthAnswer = (req, res, next) => {
   try {
   } catch (err) {
@@ -202,16 +287,34 @@ exports.eighthAnswer = (req, res, next) => {
   }
 };
 
-exports.ninthAnswer = (req, res, next) => {};
-try {
-} catch (err) {
-  res.status(400).json({
-    status: 'failed',
-    message: err.message,
-  });
-}
+// XSS
+exports.ninthAnswer = async (req, res, next) => {
+  try {
+    const flag = req.body.answer === 'hts{y0u_d1D_i7}' ? true : false;
+    if (flag) {
+      // Update user score and mark that he has attempted the test
+      const user = await User.findById(req.params.id);
+      const updatedUser = await User.findByIdAndUpdate(
+        req.params.id,
+        {
+          flags: [user.flags[0], user.flags[1] + 1, user.flags[2]],
+        },
+        {
+          new: true,
+          runValidators: true,
+        }
+      );
+    }
+  } catch (err) {
+    res.status(400).json({
+      status: 'failed',
+      message: err.message,
+    });
+  }
+};
 
-exports.tenthAnswer = (req, res, next) => {
+// REVERSING
+exports.tenthAnswer = async (req, res, next) => {
   try {
   } catch (err) {
     res.status(400).json({
@@ -221,8 +324,24 @@ exports.tenthAnswer = (req, res, next) => {
   }
 };
 
-exports.eleventhAnswer = (req, res, next) => {
+// AUDIO VISUALIZER
+exports.eleventhAnswer = async (req, res, next) => {
   try {
+    const flag = req.body.answer === 'hts{f0u3d 5e}' ? true : false;
+    if (flag) {
+      // Update user score and mark that he has attempted the test
+      const user = await User.findById(req.params.id);
+      const updatedUser = await User.findByIdAndUpdate(
+        req.params.id,
+        {
+          flags: [user.flags[0], user.flags[1] + 1, user.flags[2]],
+        },
+        {
+          new: true,
+          runValidators: true,
+        }
+      );
+    }
   } catch (err) {
     res.status(400).json({
       status: 'failed',
