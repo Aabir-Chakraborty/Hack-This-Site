@@ -4,12 +4,11 @@ import LoginForm from "../components/LoginForm";
 
 import astro from "../assets/astro-chill.png"
 
-
 function Login() {
 
     return (
-        <>
-            <h1 id="top-header" className="text-white text-7xl text-center mt-20" style={{
+        <main id="login">
+            <h1 id="top-header" className="text-white text-7xl text-center pt-20" style={{
                 fontFamily: ["Franklin Gothic Medium"],
             }} >PREPARE TO TAKE OFF🚀</h1>
             <section className="flex justify-around mt-24 ">
@@ -18,7 +17,7 @@ function Login() {
                 </div>
                 <LoginForm />
             </section>
-        </>
+        </main>
     )
 }
 export default Login;
