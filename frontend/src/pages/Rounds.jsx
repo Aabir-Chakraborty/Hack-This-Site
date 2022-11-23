@@ -25,12 +25,12 @@ export default function Rounds() {
                 </div>
                 <div className="text-white flex flex-row justify-evenly mt-7">
                     <Link to={'question/1'} className="ques-links">Ques-1</Link>
-                    {/* <Link to={'question/2'} className="ques-links">Ques-2</Link> */}
-                    {/* <Link to={'question/3'} className="ques-links">Ques-3</Link> */}
-                    {/* <Link to={'question/4'} className="ques-links">Ques-4</Link> */}
+                    <Link to={'question/2'} className="ques-links">Ques-2</Link>
+                    <Link to={'question/3'} className="ques-links">Ques-3</Link>
+                    <Link to={'question/4'} className="ques-links">Ques-4</Link>
                 </div>
             </div>
-            {/* <div className="flex flex-row justify-around mt-9">
+            <div className="flex flex-row justify-around mt-9">
                 <button disabled={isPrevDisabled} className={`text-black text-lg font-semibold bg-gradient-to-tr  from-pink-500 to-red-500 rounded-xl px-9 py-3 ${isPrevDisabled && 'cursor-not-allowed'}`}>
                     {isPrevDisabled ?
                         <span>Previous round</span>
@@ -44,7 +44,7 @@ export default function Rounds() {
                         <Link to={`/round/${+roundParam.rno + 1}`} >Next page</Link>
                     }
                 </button>
-            </div> */}
+            </div>
         </main>
     )
 }
