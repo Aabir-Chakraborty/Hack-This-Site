@@ -11,6 +11,7 @@ const cors = require('cors');
 const AppError = require('./utils/appError');
 const globalErrorHandler = require('./controllers/errorController');
 const authRouter = require('./routes/authRoutes');
+const userRouter = require('./routes/userRoutes');
 const questionRouter = require('./routes/questionRoutes');
 const answerRouter = require('./routes/answerRoutes');
 
@@ -45,6 +46,7 @@ app.use(xss());
 // 2) ROUTES
 // USING GLOBAL HANDLER
 app.use('/api/v1/users', authRouter);
+app.use('/api/v1/user', userRouter);
 app.use('/api/v1/questions', questionRouter);
 app.use('/api/v1/answers', answerRouter);
 
