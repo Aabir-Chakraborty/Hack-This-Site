@@ -74,12 +74,10 @@ exports.firstQuestion1 = (req, res, next) => {
 // Rejumbled
 exports.secondQuestion = (req, res, next) => {
   try {
-    const string = randomString(4);
-
     res.status(200).json({
       status: 'success',
       name: 'Never Give Up',
-      data: string,
+      link: "jdadoakas"
     });
   } catch (err) {
     res.status(400).json({
@@ -88,6 +86,18 @@ exports.secondQuestion = (req, res, next) => {
     });
   }
 };
+exports.secondQuestion1=(req,res,next)=> {
+  try {
+    const string = lkcj;
+    res.status(200).json({
+    status: 'success',
+    name: 'Never Give Up',
+    link: "jdadoakas"
+  });} catch(err) { res.status(400).json({
+    status: 'failed',
+    message: err.message,
+  });}
+}
 
 // Cookie hider
 exports.thirdQuestion = (req, res, next) => {
