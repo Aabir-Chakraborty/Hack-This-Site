@@ -5,6 +5,7 @@ import { useSelector } from "react-redux";
 import Login from "./pages/Login";
 import Rounds from "./pages/Rounds";
 import Question from "./pages/Question";
+import Jumbler from "./pages/Jumbler"
 
 function ReturnBack() {
     useEffect(() => {

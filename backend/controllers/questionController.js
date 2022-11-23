@@ -88,11 +88,10 @@ exports.secondQuestion = (req, res, next) => {
 };
 exports.secondQuestion1=(req,res,next)=> {
   try {
-    const string = lkcj;
+    const data = 'lkcj';
     res.status(200).json({
     status: 'success',
-    name: 'Never Give Up',
-    link: "jdadoakas"
+    data
   });} catch(err) { res.status(400).json({
     status: 'failed',
     message: err.message,
