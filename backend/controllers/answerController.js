@@ -78,7 +78,7 @@ exports.firstAnswer1 = (req, res, next) => {
       (Math.abs(givenAnswer - actualAnswer) / givenAnswer) * 100 < 3
         ? true
         : false;
-    const flag = result && correctAnswers++ > 3 ? true : false;
+    const flag = result && correctAnswers++ > 3 ? 'bUzZ3d' : '';
 
     res.status(200).json({
       status: 'success',
@@ -233,6 +233,7 @@ exports.sixthAnswer = async (req, res, next) => {
     if (flag) {
       // Update user score and mark that he has attempted the test
       const user = await User.findById(req.params.id);
+      console.log(user.totalFlags);
       const updatedUser = await User.findByIdAndUpdate(
         req.params.id,
         {
