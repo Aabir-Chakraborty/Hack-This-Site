@@ -57,5 +57,9 @@ app.all('*', (req, res, next) => {
 
 app.use(globalErrorHandler);
 
+app.get('/', (req, res) => {
+  res.send('<h1>Home page for backend for hack the site app!</h1>');
+});
+
 // EXPORTING APP
 module.exports = app;
