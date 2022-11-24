@@ -36,6 +36,17 @@ const randomString = (len = 1) => {
   return randomString;
 };
 
+// FUNCTION TO SHUFFLE STRING
+function shuffle(s) {
+  let arr = s.split(''); // Convert String to array
+
+  arr.sort(function () {
+    return 0.5 - Math.random();
+  });
+  s = arr.join(''); // Convert Array to string
+  return s; // Return shuffled string
+}
+
 // Nth Root Algorithm
 exports.firstQuestion = (req, res, next) => {
   try {
@@ -88,7 +99,9 @@ exports.secondQuestion = (req, res, next) => {
 };
 exports.secondQuestion1 = (req, res, next) => {
   try {
-    const string = lkcj;
+    let string = 'lkcj';
+    shuffle(string);
+
     res.status(200).json({
       status: 'success',
       string,
