@@ -53,7 +53,7 @@ exports.firstQuestion = (req, res, next) => {
     res.status(200).json({
       status: 'success',
       name: 'RootN',
-      link: 'hjdijad',
+      link: 'https://Salem9221.netlify.app/',
     });
   } catch (err) {
     res.status(400).json({
@@ -120,7 +120,6 @@ exports.thirdQuestion = (req, res, next) => {
     res.status(200).json({
       status: 'success',
       name: 'Yummm',
-      question: 'Tim Hortons > Starbucks',
       link: 'fhjsdaodoa',
     });
   } catch (err) {
