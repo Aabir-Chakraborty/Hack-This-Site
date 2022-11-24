@@ -48,7 +48,6 @@ exports.firstAnswer = async (req, res, next) => {
         req.params.id,
         {
           flags: [user.flags[0] + 1, user.flags[1], user.flags[2]],
-          totalFlags: user.totalFlags + 1,
         },
         {
           new: true,
@@ -110,7 +109,6 @@ exports.secondAnswer = async (req, res, next) => {
         req.params.id,
         {
           flags: [user.flags[0] + 1, user.flags[1], user.flags[2]],
-          totalFlags: user.totalFlags + 1,
         },
         {
           new: true,
@@ -139,12 +137,10 @@ exports.thirdAnswer = async (req, res, next) => {
       // Update user score and mark that he has attempted the test
       correct = true;
       const user = await User.findById(req.params.id);
-      console.log(user.totalFlags);
       const updatedUser = await User.findByIdAndUpdate(
         req.params.id,
         {
           flags: [user.flags[0] + 1, user.flags[1], user.flags[2]],
-          totalFlags: user.totalFlags + 1,
         },
         {
           new: true,
@@ -179,7 +175,6 @@ exports.fourthAnswer = async (req, res, next) => {
         req.params.id,
         {
           flags: [user.flags[0] + 1, user.flags[1], user.flags[2]],
-          totalFlags: user.totalFlags + 1,
         },
         {
           new: true,
@@ -211,7 +206,6 @@ exports.fifthAnswer = async (req, res, next) => {
         req.params.id,
         {
           flags: [user.flags[0], user.flags[1] + 1, user.flags[2]],
-          totalFlags: user.totalFlags + 1,
         },
         {
           new: true,
@@ -239,11 +233,11 @@ exports.sixthAnswer = async (req, res, next) => {
     if (flag) {
       // Update user score and mark that he has attempted the test
       const user = await User.findById(req.params.id);
+      console.log(user.totalFlags);
       const updatedUser = await User.findByIdAndUpdate(
         req.params.id,
         {
           flags: [user.flags[0], user.flags[1] + 1, user.flags[2]],
-          totalFlags: user.totalFlags + 1,
         },
         {
           new: true,
@@ -274,7 +268,6 @@ exports.seventhAnswer = async (req, res, next) => {
         req.params.id,
         {
           flags: [user.flags[0], user.flags[1] + 1, user.flags[2]],
-          totalFlags: user.totalFlags + 1,
         },
         {
           new: true,
@@ -295,28 +288,8 @@ exports.seventhAnswer = async (req, res, next) => {
 };
 
 // OCINT
-exports.eighthAnswer = async (req, res, next) => {
+exports.eighthAnswer = (req, res, next) => {
   try {
-    const flag = req.body.answer === 'hts{42.717_12.111}' ? true : false;
-    if (flag) {
-      // Update user score and mark that he has attempted the test
-      const user = await User.findById(req.params.id);
-      const updatedUser = await User.findByIdAndUpdate(
-        req.params.id,
-        {
-          flags: [user.flags[0], user.flags[1] + 1, user.flags[2]],
-          totalFlags: user.totalFlags + 1,
-        },
-        {
-          new: true,
-          runValidators: true,
-        }
-      );
-    }
-    res.status(200).json({
-      status: 'success',
-      correct: flag,
-    });
   } catch (err) {
     res.status(400).json({
       status: 'failed',
@@ -336,7 +309,6 @@ exports.ninthAnswer = async (req, res, next) => {
         req.params.id,
         {
           flags: [user.flags[0], user.flags[1], user.flags[2] + 1],
-          totalFlags: user.totalFlags + 1,
         },
         {
           new: true,
@@ -367,7 +339,6 @@ exports.tenthAnswer = async (req, res, next) => {
         req.params.id,
         {
           flags: [user.flags[0], user.flags[1], user.flags[2] + 1],
-          totalFlags: user.totalFlags + 1,
         },
         {
           new: true,
@@ -398,7 +369,6 @@ exports.eleventhAnswer = async (req, res, next) => {
         req.params.id,
         {
           flags: [user.flags[0], user.flags[1], user.flags[2] + 1],
-          totalFlags: user.totalFlags + 1,
         },
         {
           new: true,

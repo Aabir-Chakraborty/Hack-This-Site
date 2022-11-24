@@ -14,7 +14,7 @@ router.get('/round/2/question/13', questionController.fifthQuestion3);
 router.get('/round/2/question/14', questionController.fifthQuestion4);
 
 // USER MUST BE LOGGED IN TO ACCESS THE FOLLOWING ROUTES
-router.use(authController.protect);
+// router.use(authController.protect);
 
 router.get('/round/1/question/1', questionController.firstQuestion);
 router.get('/round/1/question/2', questionController.secondQuestion);
