@@ -130,15 +130,14 @@ exports.thirdQuestion = (req, res, next) => {
   }
 };
 // Cookie hider generator
-exports.thirdQuestion = (req, res, next) => {
+exports.thirdQuestion1 = (req, res, next) => {
   try {
-    const answer = randomString(12);
-
+    const answer = 'g0t_m3_pUrP1e';
     res.cookie(':)', answer);
 
     res.status(200).json({
       status: 'success',
-      name: 'Purple',
+      answer,
     });
   } catch (err) {
     res.status(400).json({
