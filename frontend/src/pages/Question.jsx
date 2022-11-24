@@ -15,7 +15,6 @@ export default function Question() {
     const param = useParams();  // the param object now has the data 
 
     const authState = useSelector(state => state.auth);
-    const roundState = useSelector(state => state.round);
     const dispatch = useDispatch();
 
     useEffect(() => {

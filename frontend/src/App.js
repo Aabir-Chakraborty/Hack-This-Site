@@ -5,9 +5,10 @@ import { useSelector, useDispatch } from "react-redux";
 import Login from "./pages/Login";
 import Rounds from "./pages/Rounds";
 import Question from "./pages/Question";
+import RootFinder from "./pages/RootFind";
 import LeaderBoard from "./pages/Leaderboards";
 
-import { completeOneQuestion, qualifyNextRound } from "./store/roundSlice";
+import { qualifyNextRound } from "./store/roundSlice";
 
 function ReturnBack() {
     useEffect(() => {
@@ -44,6 +45,7 @@ export default function App() {
                 <Route path="/round/:rno" element={<Rounds />}></Route>
                 <Route path="/round/:rno/question/:id" element={<Question />} />
                 <Route path="/leaderboard" element={<LeaderBoard />} />
+                <Route path="/findR" element={<RootFinder />} />
                 <Route path="*" element={<ReturnBack />} />
             </Routes>
         </>
