@@ -53,6 +53,7 @@ exports.firstQuestion = (req, res, next) => {
     res.status(200).json({
       status: 'success',
       name: 'RootN',
+      link: '/findR',
     });
   } catch (err) {
     res.status(400).json({
