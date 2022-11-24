@@ -132,6 +132,7 @@ exports.secondAnswer = async (req, res, next) => {
 // COOKIE
 exports.thirdAnswer = async (req, res, next) => {
   try {
+    let correct = false;
     if (req.body.answer === 'hts{g0t_m3_pUrP1e}') {
       // Update user score and mark that he has attempted the test
       correct = true;
@@ -146,10 +147,11 @@ exports.thirdAnswer = async (req, res, next) => {
           runValidators: true,
         }
       );
+      console.log(updatedUser);
     }
     res.status(200).json({
       status: 'success',
-      flag,
+      correct,
     });
   } catch (err) {
     res.status(400).json({

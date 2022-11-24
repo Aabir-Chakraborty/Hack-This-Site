@@ -16,20 +16,8 @@ const userSchema = new mongoose.Schema({
     default: false,
   },
   flags: {
-    type: [
-      {
-        type: Number,
-        default: 0,
-      },
-      {
-        type: Number,
-        default: 0,
-      },
-      {
-        type: Number,
-        default: 0,
-      },
-    ],
+    type: Array,
+    default: [0, 0, 0],
   },
   totalFlags: {
     type: Number,
