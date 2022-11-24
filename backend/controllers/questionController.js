@@ -88,6 +88,7 @@ exports.secondQuestion = (req, res, next) => {
     res.status(200).json({
       status: 'success',
       name: 'Never Give Up',
+      question: 'No need to submit in hts{} format',
       link: 'https://jumbler2.netlify.app/',
     });
   } catch (err) {
