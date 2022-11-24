@@ -1,17 +1,22 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { useSelector } from "react-redux"
-import { ArrowLeftCircleIcon } from "@heroicons/react/24/solid"
+import { useSelector, useDispatch } from "react-redux"
+import { ArrowLeftCircleIcon, } from "@heroicons/react/24/solid";
+
+import { completeOneQuestion } from "../store/roundSlice";
 
 
 export default function Question() {
     const [quesName, setQuesName] = useState("");
     const [question, setQuestion] = useState("");
     const [linkName, setLinkName] = useState("");
+    const [answer, setAnswer] = useState("");
 
     const param = useParams();  // the param object now has the data 
 
-    const authState = useSelector(state => state.auth)
+    const authState = useSelector(state => state.auth);
+    const roundState = useSelector(state => state.round);
+    const dispatch = useDispatch();
 
     useEffect(() => {
         const getData = async () => {
@@ -37,6 +42,11 @@ export default function Question() {
     }, [])
 
 
+    const answerInputHandler = e => {
+        setAnswer(e.target.value);
+    }
+
+
     const answerSubmitHandler = async e => {
         e.preventDefault();
         let url;
@@ -47,9 +57,23 @@ export default function Question() {
                 'Content-type': "application/json",
                 'Authorization': `Bearer ${authState.token}`
             },
-            body: JSON.stringify(),
+            body: JSON.stringify({
+                answer: answer
+            }),
         }
-        const sendAnswer = await fetch(url, methodDataObject);
+        try {
+            const sendAnswer = await fetch(url, methodDataObject).then(res => res.json()).catch(err => {
+                throw err
+            })
+            console.log(sendAnswer);
+            // correct field, status -> request recieved
+            if (sendAnswer.correct) {
+                dispatch(completeOneQuestion());
+            }
+            setAnswer("");
+        } catch (err) {
+            console.log(err);
+        }
     }
 
     return (
@@ -78,10 +102,14 @@ export default function Question() {
                     <input type="text" style={{
                         background: "rgba(255,255,255,0.3)"
 
-                    }} className="text-xl z-10 text-white rounded-md w-[38rem] px-3 py-2 focus:outline-none" />
+                    }}
+                        value={answer}
+                        onChange={answerInputHandler}
+                        className="text-xl z-10 text-white rounded-md w-[38rem] px-3 py-2 focus:outline-none" />
                     <button onClick={answerSubmitHandler} className="rounded-lg active:outline-none focus:outline-none px-7 py-2 w-fit mx-auto transition-all bg-gradient-to-tr hover:scale-110 text-white from-red-700  to-pink-800 ">
                         Submit
                     </button>
+
                 </div>
             </main>
         </>

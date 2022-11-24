@@ -1,24 +1,36 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom"
+import { useSelector } from "react-redux"
 import { FlagIcon } from "@heroicons/react/24/solid";
 
 
 export default function Rounds() {
-    const [isPrevDisabled, setPrevDisabled] = useState(false);
-    const [isNextDisabled, setNextDisabled] = useState(false);
+    const [isPrevDisabled, setPrevDisabled] = useState(true);
+    const [isNextDisabled, setNextDisabled] = useState(true);
+
     const roundParam = useParams();
+
+    const roundState = useSelector(state => state.round);
 
     useEffect(() => {
         if (roundParam.rno === '1') {
-            setPrevDisabled(true);
-        }
-        else if (roundParam.rno === '3') {
+            if (roundState.roundNumber === 1) {
+                setNextDisabled(true);
+                setPrevDisabled(true);
+            } else {
+
+                setNextDisabled(false);
+                setPrevDisabled(true);
+            }
+        } else if (+roundParam.rno === roundState.roundNumber) {
             setNextDisabled(true);
-        } else {
             setPrevDisabled(false);
-            setNextDisabled(false);
         }
-    }, [roundParam])
+        else {
+            setPrevDisabled(false);
+            setNextDisabled(false)
+        }
+    }, [roundParam, roundState])
 
 
     return (
@@ -40,8 +52,7 @@ export default function Rounds() {
             <div className="flex flex-row justify-around mt-9">
                 <button disabled={isPrevDisabled} className={`text-black text-lg font-semibold bg-gradient-to-tr  from-pink-500 to-red-500 rounded-xl py-3 ${isPrevDisabled && 'cursor-not-allowed opacity-50'}`}>
                     {isPrevDisabled ?
-                        <span className="px-9">Previous round</span>
-                        :
+                        <span className="px-9">Previous round</span> :
                         <Link to={`/round/${+roundParam.rno - 1}`} className={"px-9 py-3"} >Previous round</Link>
                     }
                 </button>
