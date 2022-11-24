@@ -260,7 +260,8 @@ exports.seventhQuestion = (req, res, next) => {
     res.status(200).json({
       status: 'success',
       name: 'Bypass',
-      link: 'jdfhawifwiaf',
+      question: 'nnvssbveihlaswj',
+      link: 'https://bypass12.netlify.app/',
     });
   } catch (err) {
     res.status(400).json({
