@@ -53,7 +53,7 @@ exports.firstQuestion = (req, res, next) => {
     res.status(200).json({
       status: 'success',
       name: 'RootN',
-      link: 'https://Salem9221.netlify.app/',
+      link: 'kadkas',
     });
   } catch (err) {
     res.status(400).json({
@@ -270,12 +270,13 @@ exports.seventhQuestion = (req, res, next) => {
   }
 };
 
+// OSINT
 exports.eighthQuestion = (req, res, next) => {
   try {
     res.status(200).json({
       status: 'success',
       name: 'Pizza',
-      link: 'Nalin',
+      link: 'https://cdn.discordapp.com/attachments/732682111462539276/997545552080281660/IMG_2901.jpg#IMG_2901.jpg',
     });
   } catch (err) {
     res.status(400).json({
@@ -292,7 +293,7 @@ exports.ninthQuestion = (req, res, next) => {
       status: 'success',
       name: 'Alert me',
       question: 'Welcome to the site please introduce yourself to us',
-      link: 'placeholder',
+      link: 'https://selfalerter.netlify.app/',
     });
   } catch (err) {
     res.status(400).json({
@@ -307,7 +308,7 @@ exports.tenthQuestion = (req, res, next) => {
   try {
     res.status(200).json({
       status: 'success',
-      name: 'The Big Three',
+      name: 'Break me',
       link: 'reversing file',
     });
   } catch (err) {
@@ -324,7 +325,7 @@ exports.eleventhQuestion = (req, res, next) => {
     res.status(200).json({
       status: 'success',
       name: 'Graph-ite',
-      link: 'Nalin',
+      link: 'https://drive.google.com/file/d/1a3AQZ0IiLj1dc2oKY1kJ7aE9asu362fX/view?usp=sharing',
     });
   } catch (err) {
     res.status(400).json({
