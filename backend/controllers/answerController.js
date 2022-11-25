@@ -44,16 +44,32 @@ exports.firstAnswer = async (req, res, next) => {
       correct = true;
       // Update user score and mark that he has attempted the test
       const user = await User.findById(req.params.id);
-      const updatedUser = await User.findByIdAndUpdate(
-        req.params.id,
-        {
-          flags: [user.flags[0] + 1, user.flags[1], user.flags[2]],
-        },
-        {
-          new: true,
-          runValidators: true,
-        }
-      );
+      if (user.attemptedQuestions[0] === 0) {
+        const updatedUser = await User.findByIdAndUpdate(
+          req.params.id,
+          {
+            flags: [user.flags[0] + 1, user.flags[1], user.flags[2]],
+            totalFlags: user.totalFlags + 1,
+            attemptedQuestions: [
+              user.attemptedQuestions[0] + 1,
+              user.attemptedQuestions[1],
+              user.attemptedQuestions[2],
+              user.attemptedQuestions[3],
+              user.attemptedQuestions[4],
+              user.attemptedQuestions[5],
+              user.attemptedQuestions[6],
+              user.attemptedQuestions[7],
+              user.attemptedQuestions[8],
+              user.attemptedQuestions[9],
+              user.attemptedQuestions[10],
+            ],
+          },
+          {
+            new: true,
+            runValidators: true,
+          }
+        );
+      }
     }
     res.status(200).json({
       status: 'success',
@@ -105,18 +121,33 @@ exports.secondAnswer = async (req, res, next) => {
       // Update user score and mark that he has attempted the test
       correct = true;
       const user = await User.findById(req.params.id);
-      const updatedUser = await User.findByIdAndUpdate(
-        req.params.id,
-        {
-          flags: [user.flags[0] + 1, user.flags[1], user.flags[2]],
-        },
-        {
-          new: true,
-          runValidators: true,
-        }
-      );
+      if (user.attemptedQuestions[1] === 0) {
+        const updatedUser = await User.findByIdAndUpdate(
+          req.params.id,
+          {
+            flags: [user.flags[0] + 1, user.flags[1], user.flags[2]],
+            totalFlags: user.totalFlags + 1,
+            attemptedQuestions: [
+              user.attemptedQuestions[0],
+              user.attemptedQuestions[1] + 1,
+              user.attemptedQuestions[2],
+              user.attemptedQuestions[3],
+              user.attemptedQuestions[4],
+              user.attemptedQuestions[5],
+              user.attemptedQuestions[6],
+              user.attemptedQuestions[7],
+              user.attemptedQuestions[8],
+              user.attemptedQuestions[9],
+              user.attemptedQuestions[10],
+            ],
+          },
+          {
+            new: true,
+            runValidators: true,
+          }
+        );
+      }
     }
-
     res.status(200).json({
       status: 'success',
       correct,
@@ -137,17 +168,32 @@ exports.thirdAnswer = async (req, res, next) => {
       // Update user score and mark that he has attempted the test
       correct = true;
       const user = await User.findById(req.params.id);
-      const updatedUser = await User.findByIdAndUpdate(
-        req.params.id,
-        {
-          flags: [user.flags[0] + 1, user.flags[1], user.flags[2]],
-        },
-        {
-          new: true,
-          runValidators: true,
-        }
-      );
-      console.log(updatedUser);
+      if (user.attemptedQuestions[2] === 0) {
+        const updatedUser = await User.findByIdAndUpdate(
+          req.params.id,
+          {
+            flags: [user.flags[0] + 1, user.flags[1], user.flags[2]],
+            totalFlags: user.totalFlags + 1,
+            attemptedQuestions: [
+              user.attemptedQuestions[0],
+              user.attemptedQuestions[1],
+              user.attemptedQuestions[2] + 1,
+              user.attemptedQuestions[3],
+              user.attemptedQuestions[4],
+              user.attemptedQuestions[5],
+              user.attemptedQuestions[6],
+              user.attemptedQuestions[7],
+              user.attemptedQuestions[8],
+              user.attemptedQuestions[9],
+              user.attemptedQuestions[10],
+            ],
+          },
+          {
+            new: true,
+            runValidators: true,
+          }
+        );
+      }
     }
     res.status(200).json({
       status: 'success',
@@ -171,16 +217,32 @@ exports.fourthAnswer = async (req, res, next) => {
     if (flag) {
       // Update user score and mark that he has attempted the test
       const user = await User.findById(req.params.id);
-      const updatedUser = await User.findByIdAndUpdate(
-        req.params.id,
-        {
-          flags: [user.flags[0] + 1, user.flags[1], user.flags[2]],
-        },
-        {
-          new: true,
-          runValidators: true,
-        }
-      );
+      if (user.attemptedQuestions[3] === 0) {
+        const updatedUser = await User.findByIdAndUpdate(
+          req.params.id,
+          {
+            flags: [user.flags[0] + 1, user.flags[1], user.flags[2]],
+            totalFlags: user.totalFlags + 1,
+            attemptedQuestions: [
+              user.attemptedQuestions[0],
+              user.attemptedQuestions[1],
+              user.attemptedQuestions[2],
+              user.attemptedQuestions[3] + 1,
+              user.attemptedQuestions[4],
+              user.attemptedQuestions[5],
+              user.attemptedQuestions[6],
+              user.attemptedQuestions[7],
+              user.attemptedQuestions[8],
+              user.attemptedQuestions[9],
+              user.attemptedQuestions[10],
+            ],
+          },
+          {
+            new: true,
+            runValidators: true,
+          }
+        );
+      }
     }
 
     res.status(200).json({
@@ -198,20 +260,40 @@ exports.fourthAnswer = async (req, res, next) => {
 // PROXY
 exports.fifthAnswer = async (req, res, next) => {
   try {
-    const flag = req.body.answer === 'hts{att-ach-me-nt}' ? true : false;
+    const flag =
+      req.body.answer === 'hts{att-ach-me-nt}' ||
+      req.body.answer === 'hts{attachment}'
+        ? true
+        : false;
     if (flag) {
       // Update user score and mark that he has attempted the test
       const user = await User.findById(req.params.id);
-      const updatedUser = await User.findByIdAndUpdate(
-        req.params.id,
-        {
-          flags: [user.flags[0], user.flags[1] + 1, user.flags[2]],
-        },
-        {
-          new: true,
-          runValidators: true,
-        }
-      );
+      if (user.attemptedQuestions[4] === 0) {
+        const updatedUser = await User.findByIdAndUpdate(
+          req.params.id,
+          {
+            flags: [user.flags[0], user.flags[1] + 1, user.flags[2]],
+            totalFlags: user.totalFlags + 1,
+            attemptedQuestions: [
+              user.attemptedQuestions[0],
+              user.attemptedQuestions[1],
+              user.attemptedQuestions[2],
+              user.attemptedQuestions[3],
+              user.attemptedQuestions[4] + 1,
+              user.attemptedQuestions[5],
+              user.attemptedQuestions[6],
+              user.attemptedQuestions[7],
+              user.attemptedQuestions[8],
+              user.attemptedQuestions[9],
+              user.attemptedQuestions[10],
+            ],
+          },
+          {
+            new: true,
+            runValidators: true,
+          }
+        );
+      }
     }
 
     res.status(200).json({
@@ -233,18 +315,34 @@ exports.sixthAnswer = async (req, res, next) => {
     if (flag) {
       // Update user score and mark that he has attempted the test
       const user = await User.findById(req.params.id);
-      console.log(user.totalFlags);
-      const updatedUser = await User.findByIdAndUpdate(
-        req.params.id,
-        {
-          flags: [user.flags[0], user.flags[1] + 1, user.flags[2]],
-        },
-        {
-          new: true,
-          runValidators: true,
-        }
-      );
+      if (user.attemptedQuestions[5] === 0) {
+        const updatedUser = await User.findByIdAndUpdate(
+          req.params.id,
+          {
+            flags: [user.flags[0], user.flags[1] + 1, user.flags[2]],
+            totalFlags: user.totalFlags + 1,
+            attemptedQuestions: [
+              user.attemptedQuestions[0],
+              user.attemptedQuestions[1],
+              user.attemptedQuestions[2],
+              user.attemptedQuestions[3],
+              user.attemptedQuestions[4],
+              user.attemptedQuestions[5] + 1,
+              user.attemptedQuestions[6],
+              user.attemptedQuestions[7],
+              user.attemptedQuestions[8],
+              user.attemptedQuestions[9],
+              user.attemptedQuestions[10],
+            ],
+          },
+          {
+            new: true,
+            runValidators: true,
+          }
+        );
+      }
     }
+
     res.status(200).json({
       status: 'success',
       correct: flag,
@@ -264,16 +362,32 @@ exports.seventhAnswer = async (req, res, next) => {
     if (flag) {
       // Update user score and mark that he has attempted the test
       const user = await User.findById(req.params.id);
-      const updatedUser = await User.findByIdAndUpdate(
-        req.params.id,
-        {
-          flags: [user.flags[0], user.flags[1] + 1, user.flags[2]],
-        },
-        {
-          new: true,
-          runValidators: true,
-        }
-      );
+      if (user.attemptedQuestions[6] === 0) {
+        const updatedUser = await User.findByIdAndUpdate(
+          req.params.id,
+          {
+            flags: [user.flags[0], user.flags[1] + 1, user.flags[2]],
+            totalFlags: user.totalFlags + 1,
+            attemptedQuestions: [
+              user.attemptedQuestions[0],
+              user.attemptedQuestions[1],
+              user.attemptedQuestions[2],
+              user.attemptedQuestions[3],
+              user.attemptedQuestions[4],
+              user.attemptedQuestions[5],
+              user.attemptedQuestions[6] + 1,
+              user.attemptedQuestions[7],
+              user.attemptedQuestions[8],
+              user.attemptedQuestions[9],
+              user.attemptedQuestions[10],
+            ],
+          },
+          {
+            new: true,
+            runValidators: true,
+          }
+        );
+      }
     }
     res.status(200).json({
       status: 'success',
@@ -288,8 +402,43 @@ exports.seventhAnswer = async (req, res, next) => {
 };
 
 // OCINT
-exports.eighthAnswer = (req, res, next) => {
+exports.eighthAnswer = async (req, res, next) => {
   try {
+    const flag = req.body.answer === 'hts{42.717_12.111}' ? true : false;
+    if (flag) {
+      // Update user score and mark that he has attempted the test
+      const user = await User.findById(req.params.id);
+      if (user.attemptedQuestions[7] === 0) {
+        const updatedUser = await User.findByIdAndUpdate(
+          req.params.id,
+          {
+            flags: [user.flags[0], user.flags[1] + 1, user.flags[2]],
+            totalFlags: user.totalFlags + 1,
+            attemptedQuestions: [
+              user.attemptedQuestions[0],
+              user.attemptedQuestions[1],
+              user.attemptedQuestions[2],
+              user.attemptedQuestions[3],
+              user.attemptedQuestions[4],
+              user.attemptedQuestions[5],
+              user.attemptedQuestions[6],
+              user.attemptedQuestions[7] + 1,
+              user.attemptedQuestions[8],
+              user.attemptedQuestions[9],
+              user.attemptedQuestions[10],
+            ],
+          },
+          {
+            new: true,
+            runValidators: true,
+          }
+        );
+      }
+    }
+    res.status(200).json({
+      status: 'success',
+      correct: flag,
+    });
   } catch (err) {
     res.status(400).json({
       status: 'failed',
@@ -305,16 +454,32 @@ exports.ninthAnswer = async (req, res, next) => {
     if (flag) {
       // Update user score and mark that he has attempted the test
       const user = await User.findById(req.params.id);
-      const updatedUser = await User.findByIdAndUpdate(
-        req.params.id,
-        {
-          flags: [user.flags[0], user.flags[1], user.flags[2] + 1],
-        },
-        {
-          new: true,
-          runValidators: true,
-        }
-      );
+      if (user.attemptedQuestions[8] === 0) {
+        const updatedUser = await User.findByIdAndUpdate(
+          req.params.id,
+          {
+            flags: [user.flags[0], user.flags[1], user.flags[2] + 1],
+            totalFlags: user.totalFlags + 1,
+            attemptedQuestions: [
+              user.attemptedQuestions[0],
+              user.attemptedQuestions[1],
+              user.attemptedQuestions[2],
+              user.attemptedQuestions[3],
+              user.attemptedQuestions[4],
+              user.attemptedQuestions[5],
+              user.attemptedQuestions[6],
+              user.attemptedQuestions[7],
+              user.attemptedQuestions[8] + 1,
+              user.attemptedQuestions[9],
+              user.attemptedQuestions[10],
+            ],
+          },
+          {
+            new: true,
+            runValidators: true,
+          }
+        );
+      }
     }
     res.status(200).json({
       status: 'success',
@@ -335,16 +500,32 @@ exports.tenthAnswer = async (req, res, next) => {
     if (flag) {
       // Update user score and mark that he has attempted the test
       const user = await User.findById(req.params.id);
-      const updatedUser = await User.findByIdAndUpdate(
-        req.params.id,
-        {
-          flags: [user.flags[0], user.flags[1], user.flags[2] + 1],
-        },
-        {
-          new: true,
-          runValidators: true,
-        }
-      );
+      if (user.attemptedQuestions[9] === 0) {
+        const updatedUser = await User.findByIdAndUpdate(
+          req.params.id,
+          {
+            flags: [user.flags[0], user.flags[1], user.flags[2] + 1],
+            totalFlags: user.totalFlags + 1,
+            attemptedQuestions: [
+              user.attemptedQuestions[0],
+              user.attemptedQuestions[1],
+              user.attemptedQuestions[2],
+              user.attemptedQuestions[3],
+              user.attemptedQuestions[4],
+              user.attemptedQuestions[5],
+              user.attemptedQuestions[6],
+              user.attemptedQuestions[7],
+              user.attemptedQuestions[8],
+              user.attemptedQuestions[9] + 1,
+              user.attemptedQuestions[10],
+            ],
+          },
+          {
+            new: true,
+            runValidators: true,
+          }
+        );
+      }
     }
     res.status(200).json({
       status: 'success',
@@ -365,16 +546,32 @@ exports.eleventhAnswer = async (req, res, next) => {
     if (flag) {
       // Update user score and mark that he has attempted the test
       const user = await User.findById(req.params.id);
-      const updatedUser = await User.findByIdAndUpdate(
-        req.params.id,
-        {
-          flags: [user.flags[0], user.flags[1], user.flags[2] + 1],
-        },
-        {
-          new: true,
-          runValidators: true,
-        }
-      );
+      if (user.attemptedQuestions[10] === 0) {
+        const updatedUser = await User.findByIdAndUpdate(
+          req.params.id,
+          {
+            flags: [user.flags[0], user.flags[1], user.flags[2] + 1],
+            totalFlags: user.totalFlags + 1,
+            attemptedQuestions: [
+              user.attemptedQuestions[0],
+              user.attemptedQuestions[1],
+              user.attemptedQuestions[2],
+              user.attemptedQuestions[3],
+              user.attemptedQuestions[4],
+              user.attemptedQuestions[5],
+              user.attemptedQuestions[6],
+              user.attemptedQuestions[7],
+              user.attemptedQuestions[8],
+              user.attemptedQuestions[9],
+              user.attemptedQuestions[10] + 1,
+            ],
+          },
+          {
+            new: true,
+            runValidators: true,
+          }
+        );
+      }
     }
     res.status(200).json({
       status: 'success',
