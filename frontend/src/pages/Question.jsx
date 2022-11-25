@@ -11,6 +11,7 @@ export default function Question() {
     const [question, setQuestion] = useState("");
     const [linkName, setLinkName] = useState("");
     const [answer, setAnswer] = useState("");
+    const [correct, setCorrect] = useState(false);
 
     const param = useParams();  // the param object now has the data 
 
@@ -67,6 +68,7 @@ export default function Question() {
             console.log(sendAnswer);
             // correct field, status -> request recieved
             if (sendAnswer.correct) {
+                setCorrect(true);
                 dispatch(completeOneQuestion());
             }
             setAnswer("");
@@ -108,7 +110,9 @@ export default function Question() {
                     <button onClick={answerSubmitHandler} className="rounded-lg active:outline-none focus:outline-none px-7 py-2 w-fit mx-auto transition-all bg-gradient-to-tr hover:scale-110 text-white from-red-700  to-pink-800 ">
                         Submit
                     </button>
-
+                    {!correct && <span style={{
+                        backgroundColor: "rgba(255,255,255,0.4)"
+                    }} className="text-2xl text-center mt-2 px-4 py-2 rounded-lg w-fit mx-auto text-green-800">Correct</span>}
                 </div>
             </main>
         </>
