@@ -13,7 +13,7 @@ function Form({ setFlag }) {
     const authState = useSelector(state => state.auth);
 
     async function getData() {
-        resData = await fetch(`http://localhost:8000/api/v1/questions/round/1/question/11`, {
+        resData = await fetch(`https://hello-n46uubabta-uc.a.run.app//api/v1/questions/round/1/question/11`, {
             method: "GET",
             headers: {
                 'Content-type': 'application/json',
@@ -29,7 +29,7 @@ function Form({ setFlag }) {
 
     const answerSubmitHandler = async e => {
         e.preventDefault();
-        resData = await fetch(`http://localhost:8000/api/v1/answers/round/1/answer/11`, {
+        resData = await fetch(`https://hello-n46uubabta-uc.a.run.app//api/v1/answers/round/1/answer/11`, {
             method: "POST",
             headers: {
                 "Content-type": "application/json",

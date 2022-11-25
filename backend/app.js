@@ -43,6 +43,11 @@ app.use(mongoSanitize());
 // Data sanitization against XSS
 app.use(xss());
 
+app.get('/', (req, res) => {
+  res.send('<h1>Home page for backend for hack the site app!</h1>');
+});
+
+
 // 2) ROUTES
 // USING GLOBAL HANDLER
 app.use('/api/v1/users', authRouter);
@@ -57,9 +62,6 @@ app.all('*', (req, res, next) => {
 
 app.use(globalErrorHandler);
 
-app.get('/', (req, res) => {
-  res.send('<h1>Home page for backend for hack the site app!</h1>');
-});
 
 // EXPORTING APP
 module.exports = app;

@@ -8,7 +8,7 @@ function LeaderBoard() {
 
     useEffect(() => {
         let getData = async () => {
-            let data = await fetch("http://localhost:8000/api/v1/user/leaderboard").then(res => res.json())
+            let data = await fetch("https://hello-n46uubabta-uc.a.run.app//api/v1/user/leaderboard").then(res => res.json())
             console.log(data.users);
             setPlayerData(data.users);
         }

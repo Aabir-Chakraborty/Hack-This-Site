@@ -33,7 +33,7 @@ export default function App() {
     useEffect(() => {
         if (roundState.roundNumber !== 3 && roundState.quesClear === 3) {
             dispatch(qualifyNextRound());
-        } else if (roundState.quesClear === 4) {
+        } else if (roundState.quesClear === 2) {
             dispatch(qualifyNextRound());
         }
     }, [roundState]);
