@@ -15,14 +15,13 @@ export default function Question() {
     const param = useParams();  // the param object now has the data 
 
     const authState = useSelector(state => state.auth);
-    const roundState = useSelector(state => state.round);
     const dispatch = useDispatch();
 
     useEffect(() => {
         const getData = async () => {
             let response;
             try {
-                response = await fetch(`http://localhost:8000/api/v1/questions/round/${param.rno}/question/${param.id}`, {
+                response = await fetch(`https://hello-n46uubabta-uc.a.run.app//api/v1/questions/round/${param.rno}/question/${param.id}`, {
                     method: "GET",
                     headers: {
                         'Authorization': `Bearer ${authState.token}`,
@@ -50,7 +49,7 @@ export default function Question() {
     const answerSubmitHandler = async e => {
         e.preventDefault();
         let url;
-        url = `http://localhost:8000/api/v1/answers/round/${param.rno}/answer/${param.id}`;
+        url = `https://hello-n46uubabta-uc.a.run.app/api/v1/answers/round/${param.rno}/answer/${param.id}`;
         const methodDataObject = {
             method: "POST",
             headers: {

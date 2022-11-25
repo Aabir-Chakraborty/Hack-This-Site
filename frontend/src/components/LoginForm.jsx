@@ -38,7 +38,7 @@ export default function LoginForm() {
         // http://localhost:8000/api/v1/
 
         try {
-            let resData = await fetch("http://localhost:8000/api/v1/users/login/", {
+            let resData = await fetch("https://hello-n46uubabta-uc.a.run.app//api/v1/users/login/", {
                 method: "POST",
                 headers: {
                     'content-type': "application/json",
