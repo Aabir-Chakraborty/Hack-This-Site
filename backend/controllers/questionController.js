@@ -66,13 +66,13 @@ exports.firstQuestion = (req, res, next) => {
 exports.firstQuestion1 = (req, res, next) => {
   try {
     let number = 0;
-    console.log(number);
     while (number % 10 == 0) {
       number = Math.floor(Math.random() * 89 + 10);
     }
+    const num = `${Math.floor(number / 10)} ${number % 10}`;
     res.status(200).json({
       status: 'success',
-      data: number,
+      data: num,
     });
   } catch (err) {
     res.status(400).json({
@@ -278,6 +278,7 @@ exports.eighthQuestion = (req, res, next) => {
     res.status(200).json({
       status: 'success',
       name: 'Pizza',
+      question: 'Flag in this format hts{11.111_11.111}',
       link: 'https://cdn.discordapp.com/attachments/732682111462539276/997545552080281660/IMG_2901.jpg#IMG_2901.jpg',
     });
   } catch (err) {
